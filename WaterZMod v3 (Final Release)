@@ -23,7 +23,6 @@ var _0x59e6=['touchleave','testicle','xOff','Biatch','ahole','sin','dilld0','spi
 		 * event-lite.js - Light-weight EventEmitter (less than 1KB when gzipped)
 		 *
 		 * @copyright Jake Kartashov - pending
-		 * @lisence GitHub
 		 * var EventLite = require("event-lite");
 		 *
 		 * function MyClass() {...}             // your class
