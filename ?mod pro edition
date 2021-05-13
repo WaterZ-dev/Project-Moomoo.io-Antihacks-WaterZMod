@@ -8459,7 +8459,7 @@ for(let i = 0; i < 430; i++){
         setTimeout( () => {
             doNewSend(["6", [15]]);
             doNewSend(["13c", [0, 21, 1]]);
-        }, 200); //ranged insta/bow insta
+        }, 200); //ranged insta bow insta
         setTimeout( () => {
             doNewSend(["7", [1]]);
              doNewSend(["13c", [0, 0, 1]]);
