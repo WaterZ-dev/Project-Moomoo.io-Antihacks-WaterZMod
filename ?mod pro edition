@@ -1,12 +1,12 @@
 // ==UserScript==
 // @name         ?mod Pro
-// @namespace    WaterZ#9011 (discord) and Many Other ;).    credits: [GG] Gamer, FlareZ, eveeee, and -soap-.  (insta by WaterZ, click tank, zoom out and ranged insta by FlareZ, Hat Macros and other keycode macros by WaterZ, UI by [GG] Gamer, AntiInsta and q-heal by -soap-, age one insta by FlareZ (modified by WaterZ), ws sender (specifically the custom weapon) by idk, everything else by eveeee (anti-ad, anti-prompt.), Spam text by WaterZ (update 2.0) hp bar by MaximumTears and cuss filter by eveee (copied from proj. v2)(update 2.1)
-// @description    This is the ?mod Project, aimed at killing hackers. Pro version - includes other nice to have features and all in all better than the basic one. WARNING: this will lag the hell out of slow PCs! This does not come with stuff to ease on FPS!! (basic does, not cross compatible with this.) Also, Tri-mills are a bit broken and it will eventually start to place single mill so you don't encounter problems... Boost spike is broken and is direction locked. If you know a good hack for it, I can paste it in...
+// @namespace    WaterZ#9011 (discord) and Many Other ;).    credits: [GG] Gamer, FlareZ, eveeee, MT, and -soap-.  (autoplace and antitrap by eveeee, insta by WaterZ, click tank, zoom out and ranged insta by FlareZ, spike insta by eveeee, Hat Macros and other keycode macros by WaterZ, UI by [GG] Gamer, AntiInsta and q-heal by -soap-, age one insta by FlareZ (modified by WaterZ), ws sender (specifically the custom weapon) by idk,  (anti-ad, anti-prompt.) by FlareZ, Spam text by WaterZ (update 2.0) hp bar by MaximumTears and cuss filter by eveee and WaterZ (copied from proj. v2)(update 2.1)custom names for clan, hat desc, etc. by  WaterZ, clan spam by FlareZ, custom player color (green but it's indigo) by eveeee (edit by WaterZ to change color).
+// @description    This is the ?mod Project, aimed at killing hackers. Pro version - includes other nice to have features and all in all better than the basic one. WARNING: this will lag the hell out of slow PCs! This does not come with stuff to ease on FPS!! (basic does, not cross compatible with this.) Also, Tri-mills are a bit broken and it will eventually start to place single mill so you don't encounter problems... Boost spike is broken and is direction locked. If you know a good hack for it, I can paste it in... controls are here: escape=menu, q=opheal(clowns), r=insta, t=bull, u=age one insta, f=trap/boost, g=boostspike, h=turret, j=boosthat+dark, L=bowinsta/rangedinsta, z=tank, c=turret+cx, v=spike, n=mills, up arrow=chatspam, down arrow=clanspam, NUMPAD 1=wingspam on/off, NUMPAD 2=hatspam on/off, SPACE BAR= OP STACKED SPIKE INSTA!!!, Shift=speedhat.
 // @author         WaterZ, ig.
 // @match        *://moomoo.io/*
 // @match        *://dev.moomoo.io/*
 // @match        *://sandbox.moomoo.io/*
-// @version      none
+// @version      2.1
 // @grant        none
 // @require https://greasyfork.org/scripts/368273-msgpack/code/msgpack.js?version=598723
 // @require http://code.jquery.com/jquery-3.3.1.min.js
@@ -2256,7 +2256,7 @@
 					});
 					R.isOwner && Pt[e] != R.sid && s.generateElement({
 						class: "joinAlBtn",
-						text: "Fuck",
+						text: "?mod:kick",
 						onclick: function(){
 							Lt(Pt[e])
 						},
@@ -2275,7 +2275,7 @@
 					});
 					s.generateElement({
 						class: "joinAlBtn",
-						text: "Join",
+						text: "?mod:join",
 						onclick: function(){
 							Ft(e)
 						},
@@ -2291,7 +2291,7 @@
 			s.removeAllChildren(Xe), R.team ? s.generateElement({
 				class: "allianceButtonM",
 				style: "width: 360px",
-				text: R.isOwner ? "Delete" : "Leave",
+				text: R.isOwner ? "?mod:delClan" : "?mod:leave",
 				onclick: function(){
 					Ht()
 				},
@@ -2302,10 +2302,10 @@
 				type: "text",
 				id: "allianceInput",
 				maxLength: 7,
-				placeholder: "unique name",
+				placeholder: "?mod:makeClan",
 				ontouchstart: function(e){
 					e.preventDefault();
-					var t = prompt("unique name", e.currentTarget.value);
+					var t = prompt("?mod:makeClan", e.currentTarget.value);
 					e.currentTarget.value = t.slice(0, 7)
 				},
 				parent: Xe
@@ -2313,7 +2313,7 @@
 				tag: "div",
 				class: "allianceButtonM",
 				style: "width: 140px;",
-				text: "Create",
+				text: "?mod:Submit",
 				onclick: function(){
 					zt()
 				},
@@ -6151,7 +6151,7 @@ ReloadFull = p.weapons[myPlayer.weapon].speed;
 		name: "Fluff Head",
 		price: 0,
 		scale: 120,
-		desc: "no effect"
+		desc: "Fuck me harder daddy!"
 	}, {
 		id: 36,
 		name: "Pandou Head",
@@ -8097,17 +8097,17 @@ clearTimeout(ChatSpam13);
 ChatSpam14 = setTimeout(function(){ ChatSpamFC14(); }, 1000);
 }
 function ChatSpamFC14() {
-doNewSend(["ch", [""]]);
+doNewSend(["ch", ["i kill ae86 haha"]]);
 clearTimeout(ChatSpam14);
 ChatSpam15 = setTimeout(function(){ ChatSpamFC15(); }, 1000);
 }
 function ChatSpamFC15() {
-doNewSend(["ch", [""]]);
+doNewSend(["ch", ["my anti heal boost spike"]]);
 clearTimeout(ChatSpam15);
 ChatSpam16 = setTimeout(function(){ ChatSpamFC16(); }, 1000);
 }
 function ChatSpamFC16() {
-doNewSend(["ch", [""]]);
+doNewSend(["ch", ["ok hf, gl u gonna die nubbie"]]);
 clearTimeout(ChatSpam16);
 ChatSpam1 = setTimeout(function(){ ChatSpamFC1(); }, 1000);
 }
@@ -8426,7 +8426,7 @@ for(let i = 0; i < 430; i++){
         setTimeout( () => {
             doNewSend(["13c", [0, 53, 0]]);
             doNewSend(["13c", [0, 21, 1]]);
-        }, 100);
+        }, 100); //insta
         setTimeout( () => {
             doNewSend(["c", [0]]);
              doNewSend(["13c", [0, 0, 1]]);
@@ -8459,7 +8459,7 @@ for(let i = 0; i < 430; i++){
         setTimeout( () => {
             doNewSend(["6", [15]]);
             doNewSend(["13c", [0, 21, 1]]);
-        }, 200);
+        }, 200); //ranged insta/bow insta
         setTimeout( () => {
             doNewSend(["7", [1]]);
              doNewSend(["13c", [0, 0, 1]]);
@@ -8491,7 +8491,7 @@ for(let i = 0; i < 430; i++){
         setTimeout( () => {
         doNewSend(["6", [5]]);
         place(spikeType, null);
-        }, 90);
+        }, 90); //age 1 insta
         setTimeout( () => {
         doNewSend(["13c", [0, 53, 0]]);
         doNewSend(["13c", [0, 21, 1]]);
