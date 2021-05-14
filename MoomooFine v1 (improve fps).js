@@ -9,7 +9,6 @@
 // @grant        none
 // ==/UserScript==
 
-//ad remover
 var areplacer = document.getElementsByClassName("areplacer");
 var count = areplacer.length;
 var i;
