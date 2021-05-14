@@ -1,7 +1,7 @@
 // ==UserScript==
-// @name         ?mod v2
-// @namespace    WaterZ#9011 (discord)
-// @description  -disabled text on mills, insta, heal, hat macros, etc. -added bow insta -added age 1 insta -added katana-musket and other such ws sender -added insane spike insta (OP)  -added better clanspam -added custom names: (i.e. instead of "kick" from clan it's ?mod:kick) *****VERSION 2.1*****:::: -added anti-trap  -WAY better anti-insta with smart-triggering  -added autoplace which acts as an anti-boostspike as well with smart-triggering  -added click tank  -removed fourspawnpad  -added enemy-radar; teammate radar; animal radar, reload bar, and RGB cycling HP bar.  -added cuss-filter (you can now swear all you want, with any word you can think of!!)  -removed click-bullspam = just press t for bull macro,  -improved q-heal  -added indigo player color  -improved insta,  -added zoom-out,  -added wingspam and hatspam w/ commands ***(fails on some PCs)***
+// @name         idk
+// @namespace    WaterZ#9011 (discord) and [GG] Gamer
+// @description  Edit on ae86 mod share by [gg] gamer...
 // @author        WaterZ
 // @match        *://moomoo.io/*
 // @match        *://dev.moomoo.io/*
