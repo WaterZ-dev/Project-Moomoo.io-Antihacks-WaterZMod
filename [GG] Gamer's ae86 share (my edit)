@@ -1,8 +1,8 @@
 // ==UserScript==
-// @name         idk
+// @name         OP mod!
 // @namespace    WaterZ#9011 (discord) and [GG] Gamer
-// @description  Edit on ae86 mod share by [gg] gamer...
-// @author        WaterZ
+// @description  Edit on ae86 mod share by [gg] gamer... This mod OP now (made better antiboostspike, smart auto place, better anti trap w/ hats(sometimes will lag, sorry some of my parts are obfuscated a bajillion times, don't copy my stuff >:C, and better insta and better age 1 insta. Ranged insta - only thing I change is turret hat timing (if u have laggy pc it will fail)
+// @author        WaterZ, [GG] Gamer, idk (the original script is from where), and perhaps ae86???
 // @match        *://moomoo.io/*
 // @match        *://dev.moomoo.io/*
 // @match        *://sandbox.moomoo.io/*
@@ -8032,84 +8032,84 @@ var ChatSpam15;
 var ChatSpam16;
 var ChatSpam = true;
 function ChatSpamFC1() {
-doNewSend(["ch", ["All noobs dead."]]);
+doNewSend(["ch", ["All noobs ded ez nub,"]]);
 clearTimeout(ChatSpam1);
-ChatSpam1 = setTimeout(function(){ ChatSpamFC2(); }, 1000);
+ChatSpam1 = setTimeout(function(){ ChatSpamFC2(); }, 2000);
 }
 function ChatSpamFC2() {
 doNewSend(["ch", ["discord: WaterZ#9011"]]);
 clearTimeout(ChatSpam2);
-ChatSpam3 = setTimeout(function(){ ChatSpamFC3(); }, 1000);
+ChatSpam3 = setTimeout(function(){ ChatSpamFC3(); }, 2000);
 }
 function ChatSpamFC3() {
 doNewSend(["ch", ["Bye Noob!"]]);
 clearTimeout(ChatSpam3);
-ChatSpam4 = setTimeout(function(){ ChatSpamFC4(); }, 1000);
+ChatSpam4 = setTimeout(function(){ ChatSpamFC4(); }, 2000);
 }
 function ChatSpamFC4() {
 doNewSend(["ch", ["~ye ~oob~"]]);
 clearTimeout(ChatSpam4);
-ChatSpam5 = setTimeout(function(){ ChatSpamFC5(); }, 1000);
+ChatSpam5 = setTimeout(function(){ ChatSpamFC5(); }, 2000);
 }
 function ChatSpamFC5() {
 doNewSend(["ch", ["B~e N~ob!"]]);
 clearTimeout(ChatSpam5);
-ChatSpam6 = setTimeout(function(){ ChatSpamFC6(); }, 1000);
+ChatSpam6 = setTimeout(function(){ ChatSpamFC6(); }, 2000);
 }
 function ChatSpamFC6() {
 doNewSend(["ch", ["By~ No~b!"]]);
 clearTimeout(ChatSpam6);
-ChatSpam7 = setTimeout(function(){ ChatSpamFC7(); }, 1000);
+ChatSpam7 = setTimeout(function(){ ChatSpamFC7(); }, 2000);
 }
 function ChatSpamFC7() {
 doNewSend(["ch", ["Bye~Noo~!"]]);
 clearTimeout(ChatSpam7);
-ChatSpam8 = setTimeout(function(){ ChatSpamFC8(); }, 1000);
+ChatSpam8 = setTimeout(function(){ ChatSpamFC8(); }, 2000);
 }
 function ChatSpamFC8() {
 doNewSend(["ch", ["Bye Noob!]);
 clearTimeout(ChatSpam8);
-ChatSpam9 = setTimeout(function(){ ChatSpamFC9(); }, 1000);
+ChatSpam9 = setTimeout(function(){ ChatSpamFC9(); }, 2000);
 }
 function ChatSpamFC9() {
 doNewSend(["ch", ["hi"]]);
 clearTimeout(ChatSpam9);
-ChatSpam10 = setTimeout(function(){ ChatSpamFC10(); }, 1000);
+ChatSpam10 = setTimeout(function(){ ChatSpamFC10(); }, 2000);
 }
 function ChatSpamFC10() 1
-doNewSend(["ch", ["me use ?mod pro"]]);
+doNewSend(["ch", ["me use OP hack"]]);
 clearTimeout(ChatSpam10);
-ChatSpam11 = setTimeout(function(){ ChatSpamFC11(); }, 1000);
+ChatSpam11 = setTimeout(function(){ ChatSpamFC11(); }, 2000);
 }
 function ChatSpamFC11() {
 doNewSend(["ch", ["its OP"]]);
 clearTimeout(ChatSpam11);
-ChatSpam12 = setTimeout(function(){ ChatSpamFC12(); }, 1000);
+ChatSpam12 = setTimeout(function(){ ChatSpamFC12(); }, 2000);
 }
 function ChatSpamFC12() {
-doNewSend(["ch", ["ima do a q insta"]]);
+doNewSend(["ch", ["ima do a pit insta"]]);
 clearTimeout(ChatSpam12);
-ChatSpam13 = setTimeout(function(){ ChatSpamFC13(); }, 1000);
+ChatSpam13 = setTimeout(function(){ ChatSpamFC13(); }, 2000);
 }
 function ChatSpamFC13() {
 doNewSend(["ch", ["multibox won't save u!"]]);
 clearTimeout(ChatSpam13);
-ChatSpam14 = setTimeout(function(){ ChatSpamFC14(); }, 1000);
+ChatSpam14 = setTimeout(function(){ ChatSpamFC14(); }, 2000);
 }
 function ChatSpamFC14() {
-doNewSend(["ch", ["i kill ae86 haha"]]);
+doNewSend(["ch", ["i kill ae86 haha q insta"]]);
 clearTimeout(ChatSpam14);
-ChatSpam15 = setTimeout(function(){ ChatSpamFC15(); }, 1000);
+ChatSpam15 = setTimeout(function(){ ChatSpamFC15(); }, 2000);
 }
 function ChatSpamFC15() {
 doNewSend(["ch", ["my anti heal boost spike"]]);
 clearTimeout(ChatSpam15);
-ChatSpam16 = setTimeout(function(){ ChatSpamFC16(); }, 1000);
+ChatSpam16 = setTimeout(function(){ ChatSpamFC16(); }, 2000);
 }
 function ChatSpamFC16() {
 doNewSend(["ch", ["ok hf, gl u gonna die nubbie"]]);
 clearTimeout(ChatSpam16);
-ChatSpam1 = setTimeout(function(){ ChatSpamFC1(); }, 1000);
+ChatSpam1 = setTimeout(function(){ ChatSpamFC1(); }, 2000);
 }
 function aim(x, y){
     var cvs = document.getElementById("gameCanvas");
