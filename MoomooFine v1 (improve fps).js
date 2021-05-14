@@ -1,5 +1,7 @@
 // ==UserScript==
-// @version      none
+// @name         Moomoofine
+// @author       WaterZ
+// @version      1
 // @description  this mod takes out some things that will help ease up on the fps!
 // @match                 *://moomoo.io/*
 // @match                 *://sandbox.moomoo.io/*
