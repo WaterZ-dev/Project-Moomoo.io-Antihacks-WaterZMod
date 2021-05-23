@@ -1,6 +1,6 @@
 // ==UserScript== 
 // @author       WaterZ
-// @name         Project WaterZ
+// @name         Project WaterZ for now
 // @description   Q=heal, C=soldier, G=bull, Z=tank, right click= bullspam, r=insta, k=fourspawnpad, uparrow=chatspam, Shift=speedhat, boostspike is secret key!! find it?, numpadmultiply=healtoggle, numpadsubtract=katana,etc.. also has autobuy.
 // @match        *://moomoo.io/*
 // @match        *://sandbox.moomoo.io/*
