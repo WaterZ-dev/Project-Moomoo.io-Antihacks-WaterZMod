@@ -1,6 +1,6 @@
 // ==UserScript==
 // @author       WaterZ
-// @name         Project Noob for now (deobfuscated) (no auto-updates, check back here :D)
+// @name         Project Noob for now (deobfuscated) (no auto-updates, check back here :D) ***CHANGELOG***  added 3x frozen back mills (v0.1) added boostspike (no funciton key YET) (v0.2) added spike, pit, and some hat macros (v0.3) added insta kill and q-heal (v0.4) added [kinda trash] basic autoheal (v0.5) improved autoheal (v0.6) made autoheal damage based (w/ more speed based on damage) (v0.7) made it more like an anti-insta and still kinda trash anyway (v0.8) added fourspawnpad placer (v0.9) added aimbot(broken) (v1)  added katana-musket and other upgrade hacks (v1.1) ***COMING SOON*** real anti-insta, anti trap, anti boost spike, request other stuff at my discord: WaterZ#9011
 // @match        *://moomoo.io/*
 // @match        *://sandbox.moomoo.io/*
 // @match        *://dev.moomoo.io/*
@@ -15,9 +15,9 @@
 // ==UserScript==
 setInterval(() => window.follmoo && follmoo(), 10);
 setInterval(function() {
-    //Anti Ad
+    //adblocker
     document.querySelector("#pre-content-container").style.display = "none";
-    //more fps
+    //better fps (use native res)
     window.location.native_resolution = true;
 }, 1000);
 let hue = 0;
