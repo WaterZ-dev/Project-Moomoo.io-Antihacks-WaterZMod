@@ -1,6 +1,6 @@
 // ==UserScript==
 // @author       WaterZ
-// @name         Project Noob for now (deobfuscated) (no auto-updates, check back here :D) ***CHANGELOG***  added 3x frozen back mills (v0.1) added boostspike (no funciton key YET) (v0.2) added spike, pit, and some hat macros (v0.3) added insta kill and q-heal (v0.4) added [kinda trash] basic autoheal (v0.5) improved autoheal (v0.6) made autoheal damage based (w/ more speed based on damage) (v0.7) made it more like an anti-insta and still kinda trash anyway (v0.8) added fourspawnpad placer (v0.9) added aimbot(broken) (v1)  added katana-musket and other upgrade hacks (v1.1) ***COMING SOON*** real anti-insta, anti trap, anti boost spike, request other stuff at my discord: WaterZ#9011
+// @name         Project Noob for now (deobfuscated) (no auto-updates, check back here :D) ***CHANGELOG***  added 3x frozen back mills (v0.1) added boostspike (no funciton key YET) (v0.2) added spike, pit, and some hat macros (v0.3) added insta kill and q-heal (v0.4) added [kinda trash] basic autoheal (v0.5) improved autoheal (v0.6) made autoheal damage based (w/ more speed based on damage) (v0.7) made it more like an anti-insta and still kinda trash anyway (v0.8) added fourspawnpad placer (v0.9) added aimbot (v1)  added katana-musket and other upgrade hacks (v1.1) ***COMING SOON*** real anti-insta, anti trap, anti boost spike, request other stuff at my discord: WaterZ#9011
 // @match        *://moomoo.io/*
 // @match        *://sandbox.moomoo.io/*
 // @match        *://dev.moomoo.io/*
@@ -27,27 +27,28 @@ let mouseY;
 let width;
 let height;
 
+document.title = "\x50\x72\x6f\x6a\x65"+"\x63\x74\x20\x4e\x6f"+"\x6f\x62\x20\x69\x67";
 
 setInterval(() => {
-    if(autoaim === true) {
+    if(autoaim == true) {
         doNewSend(["2", [nearestEnemyAngle]]);
     }
 }, 0);
 
 setInterval(() => {
-    if(click === true) {
+    if(click == true) {
     doNewSend(["c", [1, null]]);
     doNewSend(["c", [0, null]]);
     }
 }, 10);
 setInterval(() => {
-    if(autoprimary === true) {
+    if(autoprimary == true) {
         doNewSend(["5", [primary, true]]);
     }
 }, 0);
 
 setInterval(() => {
-    if(autosecondary === true) {
+    if(autosecondary == true) {
         doNewSend(["5", [secondary, true]]);
     }
 }, 0);
@@ -67,7 +68,6 @@ function aim(x, y){
      }));
 }
 
-document.title = "\x50\x72\x6f\x6a\x65\x63\x74\x20\x4e\x6f\x6f\x62\x20\x69\x67";
 var sWindmill = 78;
 var antiinsta = false;
 var antibull = false;
@@ -252,7 +252,7 @@ function handleMessage(m){
                         let angle = myPlayer.dir + toRad(i * 10);
                 place(spikeType, angle);
                         doNewSend(["5", [primary, true]]);
-                        doNewSend(["ch", ["e"]]);
+                        doNewSend(["ch", ["\x65"]]);
 
 
                     }
@@ -271,7 +271,7 @@ function handleMessage(m){
         nearestEnemyAngle = Math.atan2(nearestEnemy[2]-myPlayer.y, nearestEnemy[1]-myPlayer.x);
         if(Math.sqrt(Math.pow((myPlayer.y-nearestEnemy[2]), 2) + Math.pow((myPlayer.x-nearestEnemy[1]), 2)) < 0) {
             isEnemyNear = true;
-            if(autoaim === false && myPlayer.hat != 7 && myPlayer.hat != 53) {
+            if(autoaim == false && myPlayer.hat != 7 && myPlayer.hat != 53) {
                 normalHat = 6;
                 if(primary != 8) {
                     normalAcc = 19;
@@ -474,7 +474,7 @@ if (e.keyCode == 71 && document.activeElement.id.toLowerCase() !== 'chatbox') {
     }
 
  if (e.keyCode == 16 && document.activeElement.id.toLowerCase() !== 'chatbox') {
-     doNewSend(["ch", ["i am speed"]]);
+     doNewSend(["ch", [\x69\x20\x61\x6d\x20\x73\x70\x65\x65\x64"]]);
         doNewSend(["13c", [0, 0, 1]]);
         doNewSend(["13c", [0, 0, 0]]);
             doNewSend(["13c", [1, 11, 1]]);
@@ -497,10 +497,10 @@ if (e.keyCode == 71 && document.activeElement.id.toLowerCase() !== 'chatbox') {
         }
     }
 
-    if(e.keyCode == 106 && document.activeElement.id.toLowerCase() !== 'chatbox') {
+    if(e.keyCode == 187 && document.activeElement.id.toLowerCase() !== 'chatbox') {
         healToggle = (healToggle + 1) % 2;
     }
-    if(e.keyCode == 109 && document.activeElement.id.toLowerCase() !== 'chatbox') {
+    if(e.keyCode == 189 && document.activeElement.id.toLowerCase() !== 'chatbox') {
         katana = (katana + 1) % 2;
     }
 
@@ -540,7 +540,7 @@ if (e.keyCode == 71 && document.activeElement.id.toLowerCase() !== 'chatbox') {
 
 })
 document.addEventListener('keyup', (e)=>{
-if (e.keyCode == 188 && document.activeElement.id.toLowerCase() !== 'chatbox') {
+if (e.keyCode == 38 && document.activeElement.id.toLowerCase() !== 'chatbox') {
 			if (ChatSpam) {
             ChatSpam1 = setTimeout(function(){ ChatSpamFC1(); }, 1);
 			} else {
@@ -865,13 +865,13 @@ clearTimeout(ChatSpam42);
 ChatSpam1 = setTimeout(function(){ ChatSpamFC1(); }, 2000);
 }
 
-if(e.keyCode == 97 && document.activeElement.id.toLowerCase() !== 'chatbox') { ///num1 katana [age 8]
+if(e.keyCode == 188 && document.activeElement.id.toLowerCase() !== 'chatbox') { ///num1 katana [age 8]
         doNewSend(["6", [4]]);
 }
-if(e.keyCode == 98 && document.activeElement.id.toLowerCase() !== 'chatbox') { ///num2 musket [age 9]
+if(e.keyCode == 190 && document.activeElement.id.toLowerCase() !== 'chatbox') { ///num2 musket [age 9]
         doNewSend(["6", [15]]);
 }
-if(e.keyCode == 98 && document.activeElement.id.toLowerCase() !== 'chatbox') { ///num2 crossbow [age 8]
+if(e.keyCode == 190 && document.activeElement.id.toLowerCase() !== 'chatbox') { ///num2 crossbow [age 8]
         doNewSend(["6", [12]]);
 }
 if(e.keyCode == 105 && document.activeElement.id.toLowerCase() !== 'chatbox') { ///num9 max mill [age 8]
@@ -880,10 +880,10 @@ if(e.keyCode == 105 && document.activeElement.id.toLowerCase() !== 'chatbox') { 
 if(e.keyCode == 104 && document.activeElement.id.toLowerCase() !== 'chatbox') { ///num8 max wall [age 7]
         doNewSend(["6", [21]]);
 }
-if(e.keyCode == 101 && document.activeElement.id.toLowerCase() !== 'chatbox') { ///num5 spin spike [age 9]
+if(e.keyCode == 101 && document.activeElement.id.toLowerCase() !== 'chatbox') { ///num5 spinning spike [age 9]
         doNewSend(["6", [25]]);
 }
-if(e.keyCode == 102 && document.activeElement.id.toLowerCase() !== 'chatbox') { ///num6 fast crossbow [age 9]
+if(e.keyCode == 102 && document.activeElement.id.toLowerCase() !== 'chatbox') { ///num6 repeater crossbow [age 9]
         doNewSend(["6", [13]]);
 }
 if(e.keyCode == 99 && document.activeElement.id.toLowerCase() !== 'chatbox') { ///num3 great axe [age 8]
