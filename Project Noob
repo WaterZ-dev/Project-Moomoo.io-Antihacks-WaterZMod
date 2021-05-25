@@ -133,7 +133,7 @@ function n(){
 }
 document.addEventListener("mousedown", e => {
   if (e.button == 1 && iCliked == 1) {
-      doNewSend(["ch", ["\x50\x72\x6f\x6a\x65\x63\x74\x20\x4e\x6f\x6f\x62\x3a\x20\x77\x65\x61\x70\x6f\x6e\x3f"]]);
+      doNewSend(["ch", [\x68\x65\x20\x61\x74\x74\x61\x63"]]);
 doNewSend(['5', ['length', !0]]);
   }
 });
