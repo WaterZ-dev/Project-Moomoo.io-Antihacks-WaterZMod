@@ -867,28 +867,28 @@ ChatSpam1 = setTimeout(function(){ ChatSpamFC1(); }, 2000);
 
 if(e.keyCode == 97 && document.activeElement.id.toLowerCase() !== 'chatbox') { ///num1 katana [age 8]
         doNewSend(["6", [4]]);
-    }
+}
 if(e.keyCode == 98 && document.activeElement.id.toLowerCase() !== 'chatbox') { ///num2 musket [age 9]
         doNewSend(["6", [15]]);
-    }
+}
 if(e.keyCode == 98 && document.activeElement.id.toLowerCase() !== 'chatbox') { ///num2 crossbow [age 8]
         doNewSend(["6", [12]]);
-    }
+}
 if(e.keyCode == 105 && document.activeElement.id.toLowerCase() !== 'chatbox') { ///num9 max mill [age 8]
         doNewSend(["6", [28]]);
-    }
+}
 if(e.keyCode == 104 && document.activeElement.id.toLowerCase() !== 'chatbox') { ///num8 max wall [age 7]
         doNewSend(["6", [21]]);
-    }
+}
 if(e.keyCode == 101 && document.activeElement.id.toLowerCase() !== 'chatbox') { ///num5 spin spike [age 9]
         doNewSend(["6", [25]]);
-    }
+}
 if(e.keyCode == 102 && document.activeElement.id.toLowerCase() !== 'chatbox') { ///num6 fast crossbow [age 9]
         doNewSend(["6", [13]]);
-    }
+}
 if(e.keyCode == 99 && document.activeElement.id.toLowerCase() !== 'chatbox') { ///num3 great axe [age 8]
         doNewSend(["6", [2]]);
-    }
+}
 
 
 
