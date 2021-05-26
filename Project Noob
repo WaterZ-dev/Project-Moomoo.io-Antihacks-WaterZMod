@@ -59,8 +59,8 @@ added spike, pit, and some hat macros (v0.3)
 added insta kill and q-heal (v0.4) 
 added [kinda trash] basic autoheal (v0.5)
 improved autoheal (v0.6) 
-made autoheal damage based (w/ more speed based on damage) (v0.7)
-made it more like an anti-insta and still kinda trash anyway (v0.8)
+made the katana and food toggle experiment thingy (v0.7)
+made secret stuff (v0.8)
 added fourspawnpad placer (v0.9)
 added aimbot (v1)
 added katana-musket and other upgrade hacks (someimtes breaks) (v1.1)
@@ -364,7 +364,7 @@ if(item == "h" && data[1] == myPlayer.id) {
                place(foodType, null);
                place(foodType, null);
                place(foodType, null);
-               doNewSend(["ch", ["\x50\x72\x6f\x6a\x65\x63\x74\x20\x4e\x6f\x6f\x62\x3a\x20\x41\x6e\x74\x69\x2d\x49\x6e\x73\x74\x61"]])
+               doNewSend(["ch", ["\x3b\x2d\x3b\x20\x6f\x75\x63\x68"]])
            }, healSpeed);
        }
    }
