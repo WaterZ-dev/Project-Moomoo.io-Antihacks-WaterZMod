@@ -28,6 +28,7 @@ Z='click' tank (it hits once and uneqips, but you aren't really clicking -  you 
 C=soldier+cx wings
 V=spike macro (single)
 N= frozen back mills (triple)
+T= turret gear i think
 Left Click= attac
 Right click=bullspam
 scroll click=nothing yet
@@ -345,7 +346,7 @@ function handleMessage(m){
     }
 
 if(item == "h" && data[1] == myPlayer.id) {
-       if(data[2] < 100 && data[2] > 0 && healToggle == 1) { //1
+       if(data[2] < 100 && data[2] > 0 && healToggle == 1) { //Autoheal
            setTimeout( () => {
                place(foodType, null);
                place(foodType, null);
@@ -375,12 +376,11 @@ function hat(id) {
 }
 
 
-function place(id, angle = Math.atan2(mouseY - height / 2, mouseX - width / 2)) { //Mill Placer
+function place(id, angle = Math.atan2(mouseY - height / 2, mouseX - width / 2)) { //object placer
     doNewSend(["5", [id, null]]);
     doNewSend(["c", [1, angle]]);
     doNewSend(["c", [0, angle]]);
     doNewSend(["5", [null]]);
-    doNewSend(["ch", ["\x50\x72\x6f\x6a\x65\x63\x74\x20\x4e\x6f\x6f\x62\x20\x62\x79\x20\x57\x61\x74\x65\x72\x5a"]]);
 }
 
 
@@ -388,7 +388,7 @@ function holding(id, angle = Math.atan2(mouseY - height / 2, mouseX - width / 2)
     doNewSend(["5", [id, null]]);
 }
 
-function boostSpike() {
+function boostSpike() {  // boost spike
     if(boostDir == null) {
         boostDir = nearestEnemyAngle;
     }
@@ -400,7 +400,7 @@ function boostSpike() {
 
 
 
-var repeater = function(key, action, interval) {
+var repeater = function(key, action, interval) { //clear
     let _isKeyDown = false;
     let _intervalId = undefined;
 
@@ -496,19 +496,17 @@ document.addEventListener('keydown', (e)=>{
     millPlacer.start(e.keyCode);
     turretPlacer.start(e.keyCode);
 
-    if (e.keyCode == 67 && document.activeElement.id.toLowerCase() !== 'chatbox') {
+    if (e.keyCode == 67 && document.activeElement.id.toLowerCase() !== 'chatbox') { //Soldier
         doNewSend(["13c", [1, 6, 0]]);
         doNewSend(["13c", [0, 6, 0]]);
         doNewSend(["13c", [0, 0, 1]]);
-        doNewSend(["ch", [""]]);
     }
 
 
-if (e.keyCode == 71 && document.activeElement.id.toLowerCase() !== 'chatbox') {
+if (e.keyCode == 71 && document.activeElement.id.toLowerCase() !== 'chatbox') { //bull hat
         doNewSend(["13c", [1, 7, 0]]);
         doNewSend(["13c", [0, 7, 0]]);
         doNewSend(["13c", [0, 0, 1]]);
-    doNewSend(["ch", [""]]);
     }
 
 
@@ -525,14 +523,14 @@ if (e.keyCode == 71 && document.activeElement.id.toLowerCase() !== 'chatbox') {
         doNewSend(["13c", [0, 21, 1]]);
     }
 
-    if (e.keyCode == 84 && document.activeElement.id.toLowerCase() !== 'chatbox') {
+    if (e.keyCode == 84 && document.activeElement.id.toLowerCase() !== 'chatbox') { //turret gear
         doNewSend(["13c", [1, 22, 0]]);
         doNewSend(["13c", [0, 22, 0]]);
         doNewSend(["13c", [0, 0, 1]]);
 
     }
 
- if (e.keyCode == 16 && document.activeElement.id.toLowerCase() !== 'chatbox') {
+ if (e.keyCode == 16 && document.activeElement.id.toLowerCase() !== 'chatbox') { //speedhat
      doNewSend(["ch", [\x69\x20\x61\x6d\x20\x73\x70\x65\x65\x64"]]);
         doNewSend(["13c", [0, 0, 1]]);
         doNewSend(["13c", [0, 0, 0]]);
@@ -565,7 +563,7 @@ if (e.keyCode == 71 && document.activeElement.id.toLowerCase() !== 'chatbox') {
 
 
 
-     if(e.keyCode == 82 && document.activeElement.id.toLowerCase() !== 'chatbox') {
+     if(e.keyCode == 82 && document.activeElement.id.toLowerCase() !== 'chatbox') { //instakill
             autoaim = true;
             autoprimary = true;
             autosecondary = false;
@@ -576,7 +574,6 @@ if (e.keyCode == 71 && document.activeElement.id.toLowerCase() !== 'chatbox') {
             doNewSend(["13c", [0, 7, 0]]);
             doNewSend(["13c", [1, 13, 1]]);
             doNewSend(["13c", [0, 13, 1]]);
-         doNewSend(["ch", [""]]);
         setTimeout( () => {
             autoprimary = false;
             autosecondary = true;
@@ -685,7 +682,6 @@ document.addEventListener('keyup', (e)=>{
 
     if (e.keyCode == 90 && document.activeElement.id.toLowerCase() !== 'chatbox') {  //Tank gear
         click = false;
-        doNewSend(["ch", [""]]);
         doNewSend(["13c", [0, 0, 1]]);
         doNewSend(["13c", [0, 0, 0]]);
             doNewSend(["13c", [1, 21, 1]]);
