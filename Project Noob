@@ -105,7 +105,7 @@ let mouseY;
 let width;
 let height;
 
-document.title = "\x50\x72\x6f\x6a\x65"+"\x63\x74\x20\x4e\x6f"+"\x6f\x62\x20\x69\x67";
+document.title = "\x64\x73\x63\x2e\x67\x67\x2f\x70\x72\x6f\x6a\x65\x63\x74\x2d\x6e\x6f\x6f\x62";
 
 setInterval(() => {
     if(autoaim == true) {
@@ -526,7 +526,8 @@ const millPlacer = repeater(78, () => {
          place(millType, Math.atan2(mouseY - height / 2, mouseX - width / 2) + toRad(0xe53d2f0184));
         place(millType, Math.atan2(mouseY - height / 2, mouseX - width / 2) + toRad(0xe53d2f0144));
         place(millType, Math.atan2(mouseY - height / 2, mouseX - width / 2) + toRad(-0xe53d2f0144));
-;});
+});
+
 const turretPlacer = repeater(72, () => {place(turretType)}, 0);
 
 document.addEventListener('keydown', (e)=>{
@@ -618,6 +619,7 @@ document.addEventListener('keydown', (e)=>{
     if (e.keyCode == 89 && document.activeElement.id.toLowerCase() !== 'chatbox') { //idk press "y"
 	doNewSend(["13c", [0, 11, 0]]);
 	doNewSend(["13c", [0, 21, 1]]);
+    }
     
     if (e.keyCode == 74 && document.activeElement.id.toLowerCase() !== 'chatbox') { // Samurai n dark wings
                 doNewSend(["13c", [0, 19, 1]]);
