@@ -35,6 +35,9 @@ U= age 1 insta (kills soldier)
 L= bow insta (only kills soldier with polearm & bow)
 J=samurai+darkwings i think
 Y= something secret >:D
+I= Four boostplacer (or pit trap)
+B= quad spike
+O (letter o, not zero [0]) = boost spike
 Left Click= attac
 Right click=bullspam
 scroll click=nothing yet
@@ -60,7 +63,7 @@ added insta kill and q-heal (v0.4)
 added [kinda trash] basic autoheal (v0.5)
 improved autoheal (v0.6) 
 made the katana and food toggle experiment thingy (v0.7)
-made secret stuff (v0.8)
+made secret stuff and added speed hat(v0.8)
 added fourspawnpad placer (v0.9)
 added aimbot (v1)
 added katana-musket and other upgrade hacks (someimtes breaks) (v1.1)
@@ -70,18 +73,22 @@ added spike insta (v1.4)
 added bow insta (v1.5)
 added samurai hat macro (v1.6)
 added some debug/development and secret stuff (v1.7)
+made speed hat work in winter and in river - flipper and winter cap (v1.8)
+made quadspike and quad pit trap, FINALLY assigned a key to boost spike function (v1.9)
+
 
 ***COMING SOON*** 
 
 real anti-insta, 
 anti trap, 
 anti boost spike, 
-boost spike,
+autoplace?
 request other stuff at my discord: WaterZ#9011 or dsc.gg/project-noob
 
 ******NOTE:*****
 no auto updates, only will be on this github repository...
 join if epic: dsc.gg/project-noob
+
 */
 
 setInterval(() => window.follmoo && follmoo(), 10);
@@ -183,7 +190,7 @@ let myPlayer = {
     isSkull: null
 };
 
-let healSpeed = 60;
+let healSpeed = 60;    //lower is faster, vice versa
 var messageToggle = 0;
 var clanToggle = 0;
 let healToggle = 1;
@@ -394,12 +401,28 @@ function place(id, angle = Math.atan2(mouseY - height / 2, mouseX - width / 2)) 
     doNewSend(["5", [null]]);
 }
 
+function fourBoostpadder() {
+       place(boostType, myPlayer.dir + toRad(135));
+       place(boostType, myPlayer.dir + toRad(150));
+       place(boostType, myPlayer.dir + toRad(165));
+       place(boostType, myPlayer.dir + toRad(180));
+       place(boostType, myPlayer.dir + toRad(270));
+       place(boostType, myPlayer.dir + toRad(360));
+}
+
+function fourSpiker() {
+       place(spikeType, myPlayer.dir + toRad(135));
+       place(spikeType, myPlayer.dir + toRad(150));
+       place(spikeType, myPlayer.dir + toRad(165));
+       place(spikeType, myPlayer.dir + toRad(180));
+       place(spikeType, myPlayer.dir + toRad(270));
+       place(spikeType, myPlayer.dir + toRad(360));
 
 function holding(id, angle = Math.atan2(mouseY - height / 2, mouseX - width / 2)) {
     doNewSend(["5", [id, null]]);
 }
 
-function boostSpike() {  // boost spike
+function boostSpike() {
     if(boostDir == null) {
         boostDir = nearestEnemyAngle;
     }
@@ -487,6 +510,13 @@ const boostPlacer = repeater(70, () => {place(boostType);
                                         place(boostType);
                                         place(boostType)}, 0);
 const fourSpawnpader = repeater(75, fourSpawnpad, 0);
+
+const fourBoostpad = repeater(73, fourBoostPadder, 0);
+
+const fourSpike = repeater(66, fourSpiker, 0);
+
+const boostSpiker = repeater(79, boostSpike, 0);
+
 const spikePlacer = repeater(86, () => {place(spikeType);
                                         place(spikeType);
                                         place(spikeType);
