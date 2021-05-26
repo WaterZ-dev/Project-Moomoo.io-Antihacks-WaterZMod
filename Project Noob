@@ -30,9 +30,13 @@ V=spike macro (single)
 N= frozen back mills (triple)
 T= turret gear i think
 H= turret placer (turret, tp, platform, blocker, etc)
+U= age 1 insta (kills soldier)
+L= bow insta (only kills soldier with polearm & bow)
+J=samurai+darkwings i think
 Left Click= attac
 Right click=bullspam
 scroll click=nothing yet
+SPACE BAR= OP spike insta (new!)
 "-" (hyphen) = secret katana experiment(for development, too lazy to remove :P)
 "=" (equals) = secret food experiment (for development, too lazy to remove :P)
 "," (comma) = katana upgrade hack (age 8 required)
@@ -58,15 +62,18 @@ made it more like an anti-insta and still kinda trash anyway (v0.8)
 added fourspawnpad placer (v0.9)
 added aimbot (v1)
 added katana-musket and other upgrade hacks (someimtes breaks) (v1.1)
-
+added age 1 insta (v1.2)
+added soldier and cx on q heal (v1.3)
+added spike insta (v1.4)
+added bow insta (v1.5)
+added samurai hat macro (v1.6)
+added some debug/development and secret stuff (v.17)
 
 ***COMING SOON*** 
 
 real anti-insta, 
 anti trap, 
 anti boost spike, 
-age one insta, 
-bow (ranged) insta, 
 request other stuff at my discord: WaterZ#9011
 
 ******NOTE:*****
@@ -502,16 +509,97 @@ document.addEventListener('keydown', (e)=>{
         doNewSend(["13c", [0, 6, 0]]);
         doNewSend(["13c", [0, 0, 1]]);
     }
+    
+    if(e.keyCode == 85 && document.activeElement.id.toLowerCase() !== 'chatbox') { //age 1 insta
+        autoaim = true;
+        doNewSend(["5", [primary, true]]);
+        doNewSend(["13c", [0, 7, 0]]);
+        doNewSend(["13c", [0, 0, 1]]);
+        doNewSend(["13c", [0, 18, 1]]);
+        doNewSend(["7", [1]]);
+        setTimeout( () => {
+        doNewSend(["6", [5]]);
+        place(spikeType, null);
+        }, 90);
+        setTimeout( () => {
+        doNewSend(["13c", [0, 53, 0]]);
+        doNewSend(["13c", [0, 21, 1]]);
+        }, 200);
+        setTimeout( () => {
+            doNewSend(["5", [primary, true]]);
+            doNewSend(["7", [1]]);
+             doNewSend(["13c", [0, 0, 1]]);
+              doNewSend(["13c", [0, 0, 0]]);
+              if(myPlayer.y < 2400){
+              doNewSend(["13c", [0, 11, 1]]);
+              doNewSend(["13c", [0, 15, 0]]);
+              } else if(myPlayer.y > 6850 && myPlayer.y < 7550){
+              doNewSend(["13c", [0, 11, 1]]);
+              doNewSend(["13c", [0, 31, 0]]);
+              } else if(isEnemyNear == true){
+              doNewSend(["13c", [0, 21, 1]]);
+              doNewSend(["13c", [0, 6, 0]]);
+              } else {
+              doNewSend(["13c", [0, 11, 1]]);
+              doNewSend(["13c", [0, 12, 0]]);
+              }
+            autoaim = false;
+        }, 300);
+    }
+    
+    if(e.keyCode == 76 && document.activeElement.id.toLowerCase() !== 'chatbox'){ //bow insta
+	autoaim = true;
+        doNewSend(["5", [secondary, true]]);
+        doNewSend(["7", [1]]);
+        setTimeout( () => {
+            doNewSend(["13c", [0, 53, 0]]);
+            doNewSend(["6", [12]]);
+            doNewSend(["13c", [0, 19, 1]]);
+        }, 100);
+        setTimeout( () => {
+            doNewSend(["6", [15]]);
+            doNewSend(["13c", [0, 21, 1]]);
+        }, 200);
+        setTimeout( () => {
+            doNewSend(["7", [1]]);
+             doNewSend(["13c", [0, 0, 1]]);
+              doNewSend(["13c", [0, 0, 0]]);
+              if(myPlayer.y < 2400){
+              doNewSend(["13c", [0, 11, 1]]);
+              doNewSend(["13c", [0, 15, 0]]);
+              } else if(myPlayer.y > 6850 && myPlayer.y < 7550){
+              doNewSend(["13c", [0, 11, 1]]);
+              doNewSend(["13c", [0, 31, 0]]);
+              } else if(isEnemyNear == true){
+              doNewSend(["13c", [0, 21, 1]]);
+              doNewSend(["13c", [0, 6, 0]]);
+              } else {
+              doNewSend(["13c", [0, 11, 1]]);
+              doNewSend(["13c", [0, 12, 0]]);
+              }
+            doNewSend(["5", [primary, true]]);
+            autoaim = false;
+        }, 300);
+    }
+    
+    if (e.keyCode == 89 && document.activeElement.id.toLowerCase() !== 'chatbox') { //idk press "y"
+	doNewSend(["13c", [0, 11, 0]]);
+	doNewSend(["13c", [0, 21, 1]]);
+    
+    if (e.keyCode == 74 && document.activeElement.id.toLowerCase() !== 'chatbox') { // Samurai n dark wings
+                doNewSend(["13c", [0, 19, 1]]);
+                doNewSend(["13c", [0, 20, 0]]);
+    
+    if (e.keyCode == 81 && document.activeElement.id.toLowerCase() !== 'chatbox') { //soldier and cx equip on q heal
+	doNewSend(["13c", [0, 21, 1]]);
+	doNewSend(["13c", [0, 6, 0]]);
+    }
 
-
-if (e.keyCode == 71 && document.activeElement.id.toLowerCase() !== 'chatbox') { //bull hat
+    if (e.keyCode == 71 && document.activeElement.id.toLowerCase() !== 'chatbox') { //bull hat
         doNewSend(["13c", [1, 7, 0]]);
         doNewSend(["13c", [0, 7, 0]]);
         doNewSend(["13c", [0, 0, 1]]);
     }
-
-
-
 
 
     if (e.keyCode == 90 && document.activeElement.id.toLowerCase() !== 'chatbox') { //Tank Gear
@@ -532,7 +620,7 @@ if (e.keyCode == 71 && document.activeElement.id.toLowerCase() !== 'chatbox') { 
     }
 
  if (e.keyCode == 16 && document.activeElement.id.toLowerCase() !== 'chatbox') { //speedhat
-     doNewSend(["ch", [\x69\x20\x61\x6d\x20\x73\x70\x65\x65\x64"]]);
+     doNewSend(["ch", ["\x69\x20\x61\x6d\x20\x73\x70\x65\x65\x64"]]);
         doNewSend(["13c", [0, 0, 1]]);
         doNewSend(["13c", [0, 0, 0]]);
             doNewSend(["13c", [1, 11, 1]]);
@@ -594,33 +682,66 @@ if (e.keyCode == 71 && document.activeElement.id.toLowerCase() !== 'chatbox') { 
         doNewSend(["13c", [0, 0, 0]]);
         }, 220);
     }
-
-if(e.keyCode == 188 && document.activeElement.id.toLowerCase() !== 'chatbox') { ///katana [age 8]
+    
+    if(e.keyCode == 32 && document.activeElement.id.toLowerCase() !== 'chatbox') { //spike insta
+	autoaim = true;
+	doNewSend(["5", [primary, true]]);
+        doNewSend(["13c", [0, 7, 0]]);
+        doNewSend(["13c", [0, 0, 1]]);
+        doNewSend(["13c", [0, 18, 1]]);
+        place(spikeType, myPlayer.dir + toRad(43));
+        place(spikeType, myPlayer.dir - toRad(43));
+        doNewSend(["c", [1]]);
+        setTimeout( () => {
+            doNewSend(["13c", [0, 53, 0]]);
+            doNewSend(["13c", [0, 21, 1]]);
+        }, 100);
+        setTimeout( () => {
+            doNewSend(["c", [0]]);
+             doNewSend(["13c", [0, 0, 1]]);
+              doNewSend(["13c", [0, 0, 0]]);
+              if(myPlayer.y < 2400){
+              doNewSend(["13c", [0, 11, 1]]);
+              doNewSend(["13c", [0, 15, 0]]);
+              } else if(myPlayer.y > 6850 && myPlayer.y < 7550){
+              doNewSend(["13c", [0, 11, 1]]);
+              doNewSend(["13c", [0, 31, 0]]);
+              } else if(isEnemyNear == true){
+              doNewSend(["13c", [0, 21, 1]]);
+              doNewSend(["13c", [0, 6, 0]]);
+              } else {
+              doNewSend(["13c", [0, 11, 1]]);
+              doNewSend(["13c", [0, 12, 0]]);
+              }
+            autoaim = false;
+        }, 200);
+    }
+    if(e.keyCode == 188 && document.activeElement.id.toLowerCase() !== 'chatbox') { ///katana [age 8]
         doNewSend(["6", [4]]);
-}
-if(e.keyCode == 190 && document.activeElement.id.toLowerCase() !== 'chatbox') { ///musket [age 9]
+    }
+    if(e.keyCode == 190 && document.activeElement.id.toLowerCase() !== 'chatbox') { ///musket [age 9]
         doNewSend(["6", [15]]);
-}
-if(e.keyCode == 190 && document.activeElement.id.toLowerCase() !== 'chatbox') { ///crossbow [age 8]
+   }
+    if(e.keyCode == 190 && document.activeElement.id.toLowerCase() !== 'chatbox') { ///crossbow [age 8]
         doNewSend(["6", [12]]);
-}
-if(e.keyCode == 105 && document.activeElement.id.toLowerCase() !== 'chatbox') { ///num9 max mill [age 8]
+    }
+    if(e.keyCode == 105 && document.activeElement.id.toLowerCase() !== 'chatbox') { ///num9 max mill [age 8]
         doNewSend(["6", [28]]);
-}
-if(e.keyCode == 104 && document.activeElement.id.toLowerCase() !== 'chatbox') { ///num8 max wall [age 7]
+    }
+    if(e.keyCode == 104 && document.activeElement.id.toLowerCase() !== 'chatbox') { ///num8 max wall [age 7]
         doNewSend(["6", [21]]);
-}
-if(e.keyCode == 101 && document.activeElement.id.toLowerCase() !== 'chatbox') { ///num5 spinning spike [age 9]
+    }
+    if(e.keyCode == 101 && document.activeElement.id.toLowerCase() !== 'chatbox') { ///num5 spinning spike [age 9]
         doNewSend(["6", [25]]);
-}
-if(e.keyCode == 102 && document.activeElement.id.toLowerCase() !== 'chatbox') { ///num6 repeater crossbow [age 9]
+    }
+    if(e.keyCode == 102 && document.activeElement.id.toLowerCase() !== 'chatbox') { ///num6 repeater crossbow [age 9]
         doNewSend(["6", [13]]);
-}
-if(e.keyCode == 99 && document.activeElement.id.toLowerCase() !== 'chatbox') { ///num3 great axe [age 8]
+    }
+    if(e.keyCode == 99 && document.activeElement.id.toLowerCase() !== 'chatbox') { ///num3 great axe [age 8]
         doNewSend(["6", [2]]);
-}
+    }
 
-})
+});
 document.addEventListener('keyup', (e)=>{
 if (e.keyCode == 38 && document.activeElement.id.toLowerCase() !== 'chatbox') {
 			if (ChatSpam) {
@@ -671,7 +792,7 @@ if (e.keyCode == 38 && document.activeElement.id.toLowerCase() !== 'chatbox') {
 			}
 			ChatSpam = !ChatSpam;
 		}
-})
+});
 
 document.addEventListener('keyup', (e)=>{
     spikePlacer.stop(e.keyCode);
@@ -690,7 +811,7 @@ document.addEventListener('keyup', (e)=>{
         doNewSend(["13c", [1, 6, 0]]);
         doNewSend(["13c", [0, 6, 0]]);
     }
-})
+});
 
 var ChatSpam1;
 var ChatSpam2;
