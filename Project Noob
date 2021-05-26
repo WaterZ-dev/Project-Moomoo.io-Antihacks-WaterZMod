@@ -5,7 +5,7 @@
 // @match        *://sandbox.moomoo.io/*
 // @match        *://dev.moomoo.io/*
 // @grant        none
-// @version	 1.7
+// @version	 1.9
 // @description  dsc.gg/project-noob (this doesn't auto update so check server announcements or back here for new versions.)
 // @require https://greasyfork.org/scripts/423602-msgpack/code/msgpack.js
 // @require http://code.jquery.com/jquery-3.3.1.min.js
