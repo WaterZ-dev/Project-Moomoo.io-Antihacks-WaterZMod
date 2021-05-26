@@ -66,6 +66,10 @@ anti boost spike,
 age one insta, 
 bow (ranged) insta, 
 request other stuff at my discord: WaterZ#9011
+
+******NOTE:*****
+no auto updates, only will be on this github repository...
+join if epic: 
 */
 
 setInterval(() => window.follmoo && follmoo(), 10);
