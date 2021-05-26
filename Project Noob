@@ -597,6 +597,31 @@ if (e.keyCode == 71 && document.activeElement.id.toLowerCase() !== 'chatbox') {
         }, 220);
     }
 
+if(e.keyCode == 188 && document.activeElement.id.toLowerCase() !== 'chatbox') { ///katana [age 8]
+        doNewSend(["6", [4]]);
+}
+if(e.keyCode == 190 && document.activeElement.id.toLowerCase() !== 'chatbox') { ///musket [age 9]
+        doNewSend(["6", [15]]);
+}
+if(e.keyCode == 190 && document.activeElement.id.toLowerCase() !== 'chatbox') { ///crossbow [age 8]
+        doNewSend(["6", [12]]);
+}
+if(e.keyCode == 105 && document.activeElement.id.toLowerCase() !== 'chatbox') { ///num9 max mill [age 8]
+        doNewSend(["6", [28]]);
+}
+if(e.keyCode == 104 && document.activeElement.id.toLowerCase() !== 'chatbox') { ///num8 max wall [age 7]
+        doNewSend(["6", [21]]);
+}
+if(e.keyCode == 101 && document.activeElement.id.toLowerCase() !== 'chatbox') { ///num5 spinning spike [age 9]
+        doNewSend(["6", [25]]);
+}
+if(e.keyCode == 102 && document.activeElement.id.toLowerCase() !== 'chatbox') { ///num6 repeater crossbow [age 9]
+        doNewSend(["6", [13]]);
+}
+if(e.keyCode == 99 && document.activeElement.id.toLowerCase() !== 'chatbox') { ///num3 great axe [age 8]
+        doNewSend(["6", [2]]);
+}
+
 })
 document.addEventListener('keyup', (e)=>{
 if (e.keyCode == 38 && document.activeElement.id.toLowerCase() !== 'chatbox') {
@@ -923,34 +948,6 @@ doNewSend(["ch", [""]]);
 clearTimeout(ChatSpam42);
 ChatSpam1 = setTimeout(function(){ ChatSpamFC1(); }, 2000);
 }
-
-if(e.keyCode == 188 && document.activeElement.id.toLowerCase() !== 'chatbox') { ///katana [age 8]
-        doNewSend(["6", [4]]);
-}
-if(e.keyCode == 190 && document.activeElement.id.toLowerCase() !== 'chatbox') { ///musket [age 9]
-        doNewSend(["6", [15]]);
-}
-if(e.keyCode == 190 && document.activeElement.id.toLowerCase() !== 'chatbox') { ///crossbow [age 8]
-        doNewSend(["6", [12]]);
-}
-if(e.keyCode == 105 && document.activeElement.id.toLowerCase() !== 'chatbox') { ///num9 max mill [age 8]
-        doNewSend(["6", [28]]);
-}
-if(e.keyCode == 104 && document.activeElement.id.toLowerCase() !== 'chatbox') { ///num8 max wall [age 7]
-        doNewSend(["6", [21]]);
-}
-if(e.keyCode == 101 && document.activeElement.id.toLowerCase() !== 'chatbox') { ///num5 spinning spike [age 9]
-        doNewSend(["6", [25]]);
-}
-if(e.keyCode == 102 && document.activeElement.id.toLowerCase() !== 'chatbox') { ///num6 repeater crossbow [age 9]
-        doNewSend(["6", [13]]);
-}
-if(e.keyCode == 99 && document.activeElement.id.toLowerCase() !== 'chatbox') { ///num3 great axe [age 8]
-        doNewSend(["6", [2]]);
-}
-
-
-
 
 function isElementVisible(e) {
     return (e.offsetParent !== null);
