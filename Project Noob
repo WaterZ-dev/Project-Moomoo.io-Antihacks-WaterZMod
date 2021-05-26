@@ -1,10 +1,11 @@
 // ==UserScript==
 // @author       WaterZ
-// @name         Project Noob for now (deobfuscated) (no auto-updates, check back here :D) 
+// @name         Project Noob for now (deobfuscated) 
 // @match        *://moomoo.io/*
 // @match        *://sandbox.moomoo.io/*
 // @match        *://dev.moomoo.io/*
 // @grant        none
+// @description  Basic mod with basic features, good to use with other scripts (like goldbots, ws sender, single insta or autoheal scripts, etc.) no auto update, so check back in my github Project-Noob repository to see new updates. 
 // @require https://greasyfork.org/scripts/423602-msgpack/code/msgpack.js
 // @require http://code.jquery.com/jquery-3.3.1.min.js
 // @require https://code.jquery.com/ui/1.12.0/jquery-ui.min.js
@@ -185,14 +186,14 @@ function n(){
      this.buffer.__proto__ = new Uint8Array;
      this.type = 0;
 }
-document.addEventListener("mousedown", e => {
+document.addEventListener("mousedown", e => { //attac
   if (e.button == 1 && iCliked == 1) {
       doNewSend(["ch", [\x68\x65\x20\x61\x74\x74\x61\x63"]]);
 doNewSend(['5', ['length', !0]]);
   }
 });
 
-document.addEventListener("mousedown", e => {
+document.addEventListener("mousedown", e => { //bullspam
   if (e.button == 2) {
       doNewSend(["ch", [""]]);
             doNewSend(["13c", [0, 0, 1]]);
@@ -212,8 +213,8 @@ document.addEventListener("mousedown", e => {
             doNewSend(["13c", [1, 31, 0]]);
             doNewSend(["13c", [0, 31, 0]]);
                 } else {
-	        doNewSend(["13c", [1, 12, 0]]);//land
-            doNewSend(["13c", [0, 12, 0]]);//land
+	        doNewSend(["13c", [1, 12, 0]]);//grassland speed hat
+            doNewSend(["13c", [0, 12, 0]]);//monke tail
                 }
           }, 120);
 
