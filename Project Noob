@@ -5,7 +5,8 @@
 // @match        *://sandbox.moomoo.io/*
 // @match        *://dev.moomoo.io/*
 // @grant        none
-// @description  Basic mod with basic features, good to use with other scripts (like goldbots, ws sender, single insta or autoheal scripts, etc.) no auto update, so check back in my github Project-Noob repository to see new updates. 
+// @version	 1.7
+// @description  dsc.gg/project-noob (this doesn't auto update so check server announcements or back here for new versions.)
 // @require https://greasyfork.org/scripts/423602-msgpack/code/msgpack.js
 // @require http://code.jquery.com/jquery-3.3.1.min.js
 // @require https://code.jquery.com/ui/1.12.0/jquery-ui.min.js
@@ -33,6 +34,7 @@ H= turret placer (turret, tp, platform, blocker, etc)
 U= age 1 insta (kills soldier)
 L= bow insta (only kills soldier with polearm & bow)
 J=samurai+darkwings i think
+Y= something secret >:D
 Left Click= attac
 Right click=bullspam
 scroll click=nothing yet
@@ -51,7 +53,7 @@ up arrow = chatspam (in development)
 
 ***CHANGELOG***  
 
-added 3x frozen back mills (v0.1) 
+created script and added 3x frozen back mills (originally, it was called freeze mill and was only for mills) (v0.1) 
 added boostspike (no funciton key YET) (v0.2)
 added spike, pit, and some hat macros (v0.3)
 added insta kill and q-heal (v0.4) 
@@ -67,14 +69,15 @@ added soldier and cx on q heal (v1.3)
 added spike insta (v1.4)
 added bow insta (v1.5)
 added samurai hat macro (v1.6)
-added some debug/development and secret stuff (v.17)
+added some debug/development and secret stuff (v1.7)
 
 ***COMING SOON*** 
 
 real anti-insta, 
 anti trap, 
 anti boost spike, 
-request other stuff at my discord: WaterZ#9011
+boost spike,
+request other stuff at my discord: WaterZ#9011 or dsc.gg/project-noob
 
 ******NOTE:*****
 no auto updates, only will be on this github repository...
