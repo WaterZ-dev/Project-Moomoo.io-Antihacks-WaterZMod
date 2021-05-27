@@ -211,7 +211,7 @@ function n(){
 }
 document.addEventListener("mousedown", e => { //attac
   if (e.button == 1 && iCliked == 1) {
-      doNewSend(["ch", [\x68\x65\x20\x61\x74\x74\x61\x63"]]);
+      doNewSend(["ch", ["\x68\x65\x20\x61\x74\x74\x61\x63"]]);
 doNewSend(['5', ['length', !0]]);
   }
 });
