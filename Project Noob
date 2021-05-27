@@ -5,7 +5,7 @@
 // @match        *://sandbox.moomoo.io/*
 // @match        *://dev.moomoo.io/*
 // @grant        none
-// @version	 1.9
+// @version	 1.9.3
 // @description  dsc.gg/project-noob (this doesn't auto update so check server announcements or back here for new versions.)
 // @require https://greasyfork.org/scripts/423602-msgpack/code/msgpack.js
 // @require http://code.jquery.com/jquery-3.3.1.min.js
@@ -75,6 +75,9 @@ added samurai hat macro (v1.6)
 added some debug/development and secret stuff (v1.7)
 made speed hat work in winter and in river - flipper and winter cap (v1.8)
 made quadspike and quad pit trap, FINALLY assigned a key to boost spike function (v1.9)
+tweaked a couple of things and fine-tuned some more - cleaned up the script a bit (shortening, const, arrow functions, etc.) (v1.9.1)
+added adbocker, fps improvements (v1.9.2)
+added bull-spam (v1.9.3)
 
 
 ***COMING SOON*** 
