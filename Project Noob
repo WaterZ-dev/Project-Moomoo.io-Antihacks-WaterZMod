@@ -20,7 +20,7 @@
 
 ***CONTROLS***
 
-Q=heal (u prob need bc anti is SH1T if u have >60 ping, the anti is alright if you have good ping and fast cpu (u can tell if u have a good fps) so it processes in time more accurately)
+Q=heal (u prob need bc autoheal is SH1T if u have >60 ping, the heal is alright if you have good ping and fast cpu (u can tell if u have a good fps) so it processes in time more accurately)
 R=Insta (op ngl)
 F=Boost/pit (single)
 G=Bull hat+shadow wings
@@ -164,7 +164,7 @@ var mineType;
 var boostType;
 var turretType;
 var spawnpadType;
-var autoaim = false;
+var autoaim = false;sp
 var autoprimary = false;
 var autosecondary = false;
 var tick = 1;
@@ -331,15 +331,12 @@ function handleMessage(m){
                 place(spikeType, angle);
                         doNewSend(["5", [primary, true]]);
                         doNewSend(["ch", ["\x65"]]);
-
-
                     }
-
                 }
             }
         }
     }
-
+    
     isEnemyNear = false;
     if(enemiesNear) {
         nearestEnemy = enemiesNear.sort((a,b) => dist(a, myPlayer) - dist(b, myPlayer))[0];
@@ -357,7 +354,6 @@ function handleMessage(m){
             };
         }
     }
-
 
     if (!nearestEnemy) {
         nearestEnemyAngle = myPlayer.dir;
@@ -751,28 +747,28 @@ document.addEventListener('keydown', (e)=>{
             autoaim = false;
         }, 200);
     }
-    if(e.keyCode == 188 && document.activeElement.id.toLowerCase() !== 'chatbox') { ///katana [age 8]
+    if(e.keyCode == 188 && document.activeElement.id.toLowerCase() !== 'chatbox') { //katana [age 8]
         doNewSend(["6", [4]]);
     }
-    if(e.keyCode == 190 && document.activeElement.id.toLowerCase() !== 'chatbox') { ///musket [age 9]
+    if(e.keyCode == 190 && document.activeElement.id.toLowerCase() !== 'chatbox') { //musket [age 9]
         doNewSend(["6", [15]]);
    }
-    if(e.keyCode == 190 && document.activeElement.id.toLowerCase() !== 'chatbox') { ///crossbow [age 8]
+    if(e.keyCode == 190 && document.activeElement.id.toLowerCase() !== 'chatbox') { //crossbow [age 8]
         doNewSend(["6", [12]]);
     }
-    if(e.keyCode == 105 && document.activeElement.id.toLowerCase() !== 'chatbox') { ///num9 max mill [age 8]
+    if(e.keyCode == 105 && document.activeElement.id.toLowerCase() !== 'chatbox') { //num9 max mill [age 8]
         doNewSend(["6", [28]]);
     }
-    if(e.keyCode == 104 && document.activeElement.id.toLowerCase() !== 'chatbox') { ///num8 max wall [age 7]
+    if(e.keyCode == 104 && document.activeElement.id.toLowerCase() !== 'chatbox') { //num8 max wall [age 7]
         doNewSend(["6", [21]]);
     }
-    if(e.keyCode == 101 && document.activeElement.id.toLowerCase() !== 'chatbox') { ///num5 spinning spike [age 9]
+    if(e.keyCode == 101 && document.activeElement.id.toLowerCase() !== 'chatbox') { //num5 spinning spike [age 9]
         doNewSend(["6", [25]]);
     }
-    if(e.keyCode == 102 && document.activeElement.id.toLowerCase() !== 'chatbox') { ///num6 repeater crossbow [age 9]
+    if(e.keyCode == 102 && document.activeElement.id.toLowerCase() !== 'chatbox') { //num6 repeater crossbow [age 9]
         doNewSend(["6", [13]]);
     }
-    if(e.keyCode == 99 && document.activeElement.id.toLowerCase() !== 'chatbox') { ///num3 great axe [age 8]
+    if(e.keyCode == 99 && document.activeElement.id.toLowerCase() !== 'chatbox') { //num3 great axe [age 8]
         doNewSend(["6", [2]]);
     }
 
@@ -1115,7 +1111,7 @@ function fourSpawnpad() {
        place(spawnpadType, myPlayer.dir + toRad(360));
 }
 
-function toRad(angle) {
+function toRad(angle) {  //converts degrees to radians bc I don't know how rads work and js uses rads >:O
     return angle * 0.01745329251;
 }
 
