@@ -16,89 +16,72 @@
 // @require https://esi.glitch.me/import4.js
 // @require https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.0/jquery-confirm.min.js
 // ==UserScript==
-
 /*
-
-***CONTROLS***
-
-Q=fast heal (no need unless >160) ping
-Z=Polearm-optimized insta (not good with katana) only use when the normal insta fails too much
-R= katana-optimized insta (also good with polearm, very stacked if all runs smoothly)
-F=Boost/pit (single)
-G=Bull hat + blood wings
-K=Spawnpad (quad)
-C=soldier+cx wings
-V=spike macro (single)
-N= frozen back mills (triple)
-T= emp gear + monke tail
-H= turret placer (turret, tp, platform, blocker, etc)
-U= age 1 insta (kills soldier)
-P= katana musket after daggers/hammer
-L= bow insta (kill soldiers)
-J=samurai + monke tail
-Y= spike gear + cx wings
-I= Four boostplacer (or pit trap)
-B= quad spike
-M= Boost-mill
-. (period) = toggle autobreak trap (in beta) AUTOBREAK IS ONLY FOR KATANA
-O (letter o, not zero [0]) = boost spike
-delete (del) = crash
-]=lag insta
+Controls:
+Q=spam heal heal (no need unless >160) ping, anti is pretty decent
+Z=Insta optimized for polearm (only use if the other insta fails with polearm)
+R=Insta optimized for katana (also good with polearm, but sometimes fails)
+U=age one insta (kills soldier)
+L=Bow insta (kills soldier if you don't get katana or great axe)
+Space Bar=One-tick OP spike insta
 [=reverse insta
+]=lag insta
+P=Upgrade hacks (gets daggers,cookie,trap,spikes,hammer,tp,katana,musket)
+T=Emp and Monke
+Y=spike gear+cx wings
+G=Bull+blood wings
+J=Samurai+monke
+C=soldier+cx wings
+V=spike (one)
+F=Boost/pit (one)
+B=spike (four)
+I=Boost/pit (four)
+N=Frozen Windmills (three) **they place behind you**
+H=Turret/tp/blocker/platform (one)
+O (letter o, not zero[0])=Boostspike
+M=boost-mill
+arrow keys:
+up=animated chatspam
+down=animated clanspam
+right=toggle autoheal mode (anti-clown or anti-insta)
+left=dev stuff too lazy to revmove :P
+. (period) = toggle autobreak trap (in beta) AUTOBREAK IS TIMED ONLY FOR HAMMER, WILL NOT FINISH THE TRAP WITH OTHER WEAPONS
+delete (del) = crash
 Left Click= click tank
 Right click=bullspam
-SPACE BAR= OP spike insta
-up arrow = animated chatspam
-comma = song chatspam (in development)
-left arrow = secret (for development, coming soon)
-right arrow = toggle autoheal type (anti clown, or anti insta)]
-down arrow = animated clanspam
 
-***COMING SOON*** 
+***NOTES***
 
 anti boost spike, 
 autoplace?
 Autoinsta?
 request other stuff at my discord: WaterZ#9011
-
-
-******NOTE:*****
-
-no auto updates.... auto buy does not work for click tank and anti trap (on purpose)
-
+no auto updates.... auto buy does not work for click tank and anti trap and auto break (on purpose)
+need samurai for autoreload to work accurately
 join if epic: dsc.gg/project-noob
 - epic giveaways and events!
 - sharing private mods!
 - announcements and updates!
 - sneak-peeks and much more!
-
-
 */
-
 setInterval(() => window.follmoo && follmoo(), 10);
 setInterval(function() {
-//adblocker
+    //adblocker
     document.querySelector("#pre-content-container").style.display = "none";
-//better fps (use native res)
+    //better fps (use native res)
     window.location.native_resolution = true;
 }, 1000);
-
 let hue = 0;
-
 let mouseX;
 let mouseY;
-
 let width;
 let height;
-
 document.title = "\x50\x72\x6f\x6a\x65\x63\x74\x20\x4e\x6f\x6f\x62\x20\x76\x34";
-
 setInterval(() => {
     if(autoaim == true) {
         doNewSend(["2", [nearestEnemyAngle]]);
     }
 }, 0);
-
 setInterval(() => {
    if(clanToggle == 1) {
         doNewSend(["9", [null]]);
@@ -106,46 +89,38 @@ setInterval(() => {
     }
     doNewSend(["testing", [6]]);
 }, 200);
-
 setInterval(() => {
     if(messageToggle == 1) {
         doNewSend(["ch", [animate(true, 5)]]);
     }
 }, 200);
-
 setInterval(() => {
     if(click == true) {
     doNewSend(["c", [1, null]]);
     doNewSend(["c", [0, null]]);
     }
 }, 10);
-
 setInterval(() => {
     if(autoprimary == true) {
         doNewSend(["5", [primary, true]]);
     }
 }, 0);
-
 setInterval(() => {
     if(autosecondary == true) {
         doNewSend(["5", [secondary, true]]);
     }
 }, 0);
-
 function normal() {
     hat(normalHat);
     acc(normalAcc);
 }
-
 function aim(x, y){
      var cvs = document.getElementById("gameCanvas");
      cvs.dispatchEvent(new MouseEvent("mousemove", {
          clientX: x,
          clientY: y
-
      }));
 }
-
 var sWindmill = 78;
 var antiinsta = false;
 var antibull = false;
@@ -176,7 +151,6 @@ var normalAcc;
 var ws;
 var msgpack5 = msgpack;
 var boostDir;
-
 let myPlayer = {
     id: null,
     x: null,
@@ -190,7 +164,6 @@ let myPlayer = {
     accessory: null,
     isSkull: null
 };
-
 let healSpeed = 60;
 var messageToggle = 0;
 var clanToggle = 0;
@@ -204,15 +177,12 @@ let katana = 0;
 var PREFIX = "!";
 let clickInsta = 1;
 let autoBreak = 0;
-
 document.msgpack = msgpack;
-
 function n(){
      this.buffer = new Uint8Array([0]);
      this.buffer.__proto__ = new Uint8Array;
      this.type = 0;
 }
-
 document.addEventListener("mousedown", e => {
     if(e.button == 0){
         doNewSend(["13c", [0, 40, 0]]);
@@ -235,16 +205,14 @@ document.addEventListener("mousedown", e => {
         }, 100);
     }
 });
-
 document.addEventListener("mousedown", e => {
   if (e.button == 2) {
-      doNewSend(["ch", [""]]);
-            doNewSend(["13c", [0, 0, 1]]);
-            doNewSend(["13c", [1, 7, 0]]);
-            doNewSend(["13c", [0, 7, 0]]);
-            doNewSend(["13c", [1, 18, 1]]);
-            doNewSend(["13c", [0, 18, 1]]);
-            setTimeout( () => {
+    doNewSend(["13c", [0, 0, 1]]);
+    doNewSend(["13c", [1, 7, 0]]);
+    doNewSend(["13c", [0, 7, 0]]);
+    doNewSend(["13c", [1, 18, 1]]);
+    doNewSend(["13c", [0, 18, 1]]);
+    setTimeout( () => {
         doNewSend(["13c", [0, 0, 1]]);
         doNewSend(["13c", [0, 0, 0]]);
         doNewSend(["13c", [1, 21, 1]]);
@@ -259,33 +227,29 @@ document.addEventListener("mousedown", e => {
             doNewSend(["13c", [0, 11, 1]]);
             doNewSend(["13c", [1, 31, 0]]);
             doNewSend(["13c", [0, 31, 0]]);
-                } else {
-	        doNewSend(["13c", [1, 11, 1]]);
-	        doNewSend(["13c", [0, 11, 1]]);
-	        doNewSend(["13c", [1, 12, 0]]);
+        } else {
+            doNewSend(["13c", [1, 11, 1]]);
+            doNewSend(["13c", [0, 11, 1]]);
+            doNewSend(["13c", [1, 12, 0]]);
             doNewSend(["13c", [0, 12, 0]]);
             }
         }, 120);
     }
 });
-
 WebSocket.prototype.oldSend = WebSocket.prototype.send;
 WebSocket.prototype.send = function(m){
     if (!ws){
         document.ws = this;
-
         ws = this;
         socketFound(this);
     }
     this.oldSend(m);
 };
-
 function socketFound(socket){
     socket.addEventListener('message', function(message){
         handleMessage(message);
     });
 }
-
 function handleMessage(m){
     let temp = msgpack5.decode(new Uint8Array(m.data));
     let data;
@@ -299,7 +263,6 @@ function handleMessage(m){
     }
     let item = data[0];
     if(!data) {return}
-
     if(item === "io-init") {
             let cvs = document.getElementById("gameCanvas");
             width = cvs.clientWidth;
@@ -313,12 +276,9 @@ function handleMessage(m){
                 mouseY = e.clientY;
             });
         }
-
-
     if (item == "1" && myPlayer.id == null){
         myPlayer.id = data[1];
     }
-
     if (item == "33") {
         enemiesNear = [];
         for(let i = 0; i < data[1].length / 13; i++) {
@@ -339,8 +299,6 @@ function handleMessage(m){
             }
         }
     }
-
-
     if(item == "6"){
         for(let i = 0; i < data[1].length / 8; i++){
             let ObjectData = data[1].slice(8*i, 8*i+8);
@@ -352,24 +310,20 @@ function handleMessage(m){
                         doNewSend(["5", [primary, true]]);
                         doNewSend(["13c", [0, 53, 0]]);
                         if(autoBreak = 1) {
+                            autoprimary = false;
+                            autosecondary = true;
+                            doNewSend(["5", [secondary, true]]);
                             doNewSend(["ch", ["Project Noob: Beta Autobreak"]]);
                             setTimeout( () => {
                                 doNewSend(["13c", [0, 40, 0]]);
                                 doNewSend(["7", [1]]);
-                            }, 550);
-                            setTimeout( () => {
-                                doNewSend(["13c", [0, 40, 0]]);
-                            }, 550);
-                            setTimeout( () => {
-                                doNewSend(["13c", [0, 40, 0]]);
-                            }, 550);
-                            setTimeout( () => {
-                                doNewSend(["13c", [0, 40, 0]]);
-                            }, 550);
+                            }, 50);
                             setTimeout( () => {
                                 doNewSend(["13c", [0, 40, 0]]);
                                 doNewSend(["7", [1]]);
-                            }, 550);
+                                autosecondary = false;
+                                doNewSend(["5", [primary, true]]);
+                            }, 1500);
                         }
                         if(autoBreak = 0) {
                             setTimeout( () => {
@@ -382,12 +336,10 @@ function handleMessage(m){
             }
         }
     }
-    
     isEnemyNear = false;
     if(enemiesNear) {
         nearestEnemy = enemiesNear.sort((a,b) => dist(a, myPlayer) - dist(b, myPlayer))[0];
     }
-
     if(nearestEnemy) {
         nearestEnemyAngle = Math.atan2(nearestEnemy[2]-myPlayer.y, nearestEnemy[1]-myPlayer.x);
         if(Math.sqrt(Math.pow((myPlayer.y-nearestEnemy[2]), 2) + Math.pow((myPlayer.x-nearestEnemy[1]), 2)) < 0) {
@@ -400,11 +352,9 @@ function handleMessage(m){
             }
         }
     }
-
     if (!nearestEnemy) {
         nearestEnemyAngle = myPlayer.dir;
     }
-
     if(item == "h" && data[1] == myPlayer.id) {
         if(data[2] < 100 && data[2] > 0 && healToggle == 1) {
             setTimeout( () => {
@@ -437,31 +387,24 @@ function handleMessage(m){
             }, 10);
         }
     }
-
    update();
 }
-
 function doNewSend(sender){
     ws.send(new Uint8Array(Array.from(msgpack5.encode(sender))));
 }
-
 function acc(id) {
     doNewSend(["13c", [0, 0, 1]]);
     doNewSend(["13c", [0, id, 1]]);
 }
-
 function hat(id) {
     doNewSend(["13c", [0, id, 0]]);
 }
-
-
 function place(id, angle = Math.atan2(mouseY - height / 2, mouseX - width / 2)) {
     doNewSend(["5", [id, null]]);
     doNewSend(["c", [1, angle]]);
     doNewSend(["c", [0, angle]]);
     doNewSend(["5", [null]]);
 }
-
 function fourSpawnPad() {
     place(spawnpadType, myPlayer.dir + toRad(135));
     place(spawnpadType, myPlayer.dir + toRad(150));
@@ -470,14 +413,12 @@ function fourSpawnPad() {
     place(spawnpadType, myPlayer.dir + toRad(270));
     place(spawnpadType, myPlayer.dir + toRad(360));
 }
-
 function boostMill() {
     place(millType, boostDir + toRad(90));
     place(millType, boostDir - toRad(90));
     place(boostType, boostDir);
     doNewSend(["33", [boostDir]]);
 }
-
 function fourBoostPadder() {
     place(boostType, myPlayer.dir + toRad(0));
     place(boostType, myPlayer.dir - toRad(90));
@@ -496,7 +437,6 @@ function fourBoostPadder() {
     place(boostType, myPlayer.dir + toRad(120));
     place(boostType, myPlayer.dir - toRad(120));
 }
-
 function fourSpiker() {
     place(spikeType, myPlayer.dir + toRad(0));
     place(spikeType, myPlayer.dir - toRad(90));
@@ -515,11 +455,9 @@ function fourSpiker() {
     place(spikeType, myPlayer.dir + toRad(120));
     place(spikeType, myPlayer.dir - toRad(120));
 }
-
 function holding(id, angle = Math.atan2(mouseY - height / 2, mouseX - width / 2)) {
     doNewSend(["5", [id, null]]);
 }
-
 function boostSpike() {
     if(boostDir == null) {
         boostDir = nearestEnemyAngle;
@@ -529,13 +467,9 @@ function boostSpike() {
     place(boostType, boostDir);
     doNewSend(["33", [boostDir]]);
 }
-
-
-
 var repeater = function(key, action, interval) {
     let _isKeyDown = false;
     let _intervalId = undefined;
-
     return {
         start(keycode) {
             if(keycode == key && document.activeElement.id.toLowerCase() !== 'chatbox') {
@@ -552,7 +486,6 @@ var repeater = function(key, action, interval) {
                 }
             }
         },
-
         stop(keycode) {
             if(keycode == key && document.activeElement.id.toLowerCase() !== 'chatbox') {
                 _isKeyDown = false;
@@ -560,7 +493,6 @@ var repeater = function(key, action, interval) {
         }
     };
 };
-
 if(isEnemyNear == false && autoaim == false) {
         normalAcc = 11;
         if (myPlayer.y < 2400){
@@ -568,23 +500,20 @@ if(isEnemyNear == false && autoaim == false) {
         } else if (myPlayer.y > 6850 && myPlayer.y < 7550){
             normalHat = 31;
         } else {
-	        normalHat = 12;
+            normalHat = 12;
         }
     }
     if (!nearestEnemy) {
         nearestEnemyAngle = myPlayer.dir;
     }
-
 var repeater2 = function(key, action) {
     let _isKeyDown = false;
-
     return {
         start(keycode) {
             if(keycode == key && document.activeElement.id.toLowerCase() !== 'chatbox') {
                 _isKeyDown = true;
             }
         },
-
         stop(keycode) {
             if(keycode == key && document.activeElement.id.toLowerCase() !== 'chatbox') {
                 _isKeyDown = false;
@@ -592,7 +521,6 @@ var repeater2 = function(key, action) {
         }
     };
 };
-
 const healer2 = repeater(81, () => {
     place(foodType, null);
     place(foodType, null);
@@ -605,30 +533,22 @@ const boostPlacer = repeater(70, () => {
     place(boostType)
 }, 0);
 const fourSpawnpader = repeater(75, fourSpawnPad, 0);
-
 const boostMiller =repeater(77, boostMill, 0);
-
 const fourBoostPad = repeater(73, fourBoostPadder, 0);
-
 const fourSpike = repeater(66, fourSpiker, 0);
-
 const boostSpiker = repeater(79, boostSpike, 0);
-
 const spikePlacer = repeater(86, () => {
     place(spikeType);
     place(spikeType);
     place(spikeType);
     place(spikeType)
 }, 0);
-
 const millPlacer = repeater(78, () => {
     place(millType, Math.atan2(mouseY - height / 2, mouseX - width / 2) + toRad(0xe53d2f0184));
     place(millType, Math.atan2(mouseY - height / 2, mouseX - width / 2) + toRad(0xe53d2f0144));
     place(millType, Math.atan2(mouseY - height / 2, mouseX - width / 2) + toRad(-0xe53d2f0144));
 });
-
 const turretPlacer = repeater(72, () => {place(turretType)}, 0);
-
 document.addEventListener('keydown', (e)=>{
     spikePlacer.start(e.keyCode);
     fourSpawnpader.start(e.keyCode);
@@ -640,7 +560,6 @@ document.addEventListener('keydown', (e)=>{
     fourSpike.start(e.keyCode);
     boostSpiker.start(e.keyCode);
     boostMiller.start(e.keyCode);
-    
     if(e.keycode == 46) {
         setInterval( () => {
         doNewSend(["9", [null]]);
@@ -10419,7 +10338,6 @@ document.addEventListener('keydown', (e)=>{
     }
     doNewSend(["testing", [6]]);
 }, 0);
-
     if (e.keyCode == 67 && document.activeElement.id.toLowerCase() !== 'chatbox') {
         doNewSend(["13c", [1, 6, 0]]);
         doNewSend(["13c", [0, 6, 0]]);
@@ -10427,7 +10345,6 @@ document.addEventListener('keydown', (e)=>{
         doNewSend(["13c", [1, 21, 1]]);
         doNewSend(["13c", [0, 21, 1]]);
     }
-    
     if(e.keyCode == 85 && document.activeElement.id.toLowerCase() !== 'chatbox') { //age 1 insta
         autoaim = true;
         doNewSend(["5", [primary, true]]);
@@ -10476,7 +10393,6 @@ document.addEventListener('keydown', (e)=>{
             autoaim = false;
         }, 300);
     }
-    
     if(e.keyCode == 82 && document.activeElement.id.toLowerCase() !== 'chatbox'){
         autoaim = true;
         autoprimary = true;
@@ -10543,7 +10459,6 @@ document.addEventListener('keydown', (e)=>{
             doNewSend(["13c", [0, 12, 0]]);
         }
     }
-
     if(e.keyCode == 76 && document.activeElement.id.toLowerCase() !== 'chatbox'){ //bow insta
         autoaim = true;
         doNewSend(["5", [secondary, true]]);
@@ -10579,14 +10494,12 @@ document.addEventListener('keydown', (e)=>{
             autoaim = false;
         }, 300);
     }
-
     if (e.keyCode == 89 && document.activeElement.id.toLowerCase() !== 'chatbox') {
         doNewSend(["13c", [1, 11, 0]]);
         doNewSend(["13c", [0, 11, 0]]);
         doNewSend(["13c", [1, 21, 1]]);
         doNewSend(["13c", [0, 21, 1]]);
     }
-
     if (e.keyCode == 74 && document.activeElement.id.toLowerCase() !== 'chatbox') {
         doNewSend(["13c", [0, 11, 1]]);
         doNewSend(["13c", [1, 20, 0]]);
@@ -10596,21 +10509,18 @@ document.addEventListener('keydown', (e)=>{
         doNewSend(["13c", [0, 21, 1]]);
         doNewSend(["13c", [0, 6, 0]]);
     }
-
     if (e.keyCode == 71 && document.activeElement.id.toLowerCase() !== 'chatbox') {
         doNewSend(["13c", [1, 7, 0]]);
         doNewSend(["13c", [0, 7, 0]]);
         doNewSend(["13c", [1, 18, 1]]);
         doNewSend(["13c", [0, 18, 1]]);
     }
-
     if (e.keyCode == 84 && document.activeElement.id.toLowerCase() !== 'chatbox') {
         doNewSend(["13c", [1, 22, 0]]);
         doNewSend(["13c", [0, 22, 0]]);
         doNewSend(["13c", [1, 11, 1]]);
         doNewSend(["13c", [0, 11, 1]]);
     }
-
     if (e.keyCode == 16 && document.activeElement.id.toLowerCase() !== 'chatbox') {
         doNewSend(["ch", ["\x69\x20\x61\x6d\x20\x73\x70\x65\x65\x64"]]);
         doNewSend(["13c", [0, 0, 1]]);
@@ -10634,7 +10544,6 @@ document.addEventListener('keydown', (e)=>{
             doNewSend(["13c", [0, 12, 0]]);
         }
     }
-
     if(e.keyCode == 39 && document.activeElement.id.toLowerCase() !== 'chatbox') {
         healToggle = (healToggle + 1) % 2;
         if(healToggle == 1) {
@@ -10647,15 +10556,12 @@ document.addEventListener('keydown', (e)=>{
     if(e.keyCode == 37 && document.activeElement.id.toLowerCase() !== 'chatbox') {
         katana = (katana + 1) % 2;
     }
-    
     if(e.keyCode == 40 && document.activeElement.id.toLowerCase() !== 'chatbox') {
         clanToggle = (clanToggle + 1) % 2;
     }
-    
     if(e.keyCode == 38 && document.activeElement.id.toLowerCase() !== 'chatbox') {
         messageToggle = (messageToggle + 1) % 2;
     }
-    
     if(e.keyCode == 190 && document.activeElement.id.toLowerCase() !== 'chatbox') {
         autoBreak = (messageToggle + 1) % 2;
         if(autoBreak = 1) {
@@ -10665,7 +10571,6 @@ document.addEventListener('keydown', (e)=>{
             doNewSend(["ch",["AutoBreak Beta Deactivated"]]);
         }
     }
-
     if(e.keyCode == 90 && document.activeElement.id.toLowerCase() !== 'chatbox') { //instakill (polearm)
         autoaim = true;
         autoprimary = true;
@@ -10696,7 +10601,6 @@ document.addEventListener('keydown', (e)=>{
             doNewSend(["13c", [0, 21, 1]]);
         }, 220);
     }
-
     if(e.keyCode == 219 && document.activeElement.id.toLowerCase() !== 'chatbox'){
         autoaim = true;
         autoprimary = false;
@@ -10713,16 +10617,15 @@ document.addEventListener('keydown', (e)=>{
             autosecondary = false;
             doNewSend(["13c", [0, 0, 1]]);
             doNewSend(["5", [primary, true]]);
-            doNewSend(["7", [1]]);
             doNewSend(["13c", [1, 7, 0]]);
             doNewSend(["13c", [0, 7, 0]]);
             doNewSend(["13c", [1, 13, 1]]);
             doNewSend(["13c", [0, 13, 1]]);
+            doNewSend(["7", [1]]);
         }, 110);
         doNewSend(["13c"[0, 11, 0]]);
         doNewSend(["13c"[0, 21, 1]]);
     }
-    
     if(e.keyCode == 221 && document.activeElement.id.toLowerCase() !== 'chatbox'){
         autoaim = true;
         autoprimary= true;
@@ -10755,7 +10658,6 @@ document.addEventListener('keydown', (e)=>{
             doNewSend(["13c", [0, 0, 0]]);
         }, 160);
     }
-
     if(e.keyCode == 80 && document.activeElement.id.toLowerCase() !== 'chatbox') {
         doNewSend(["6", [7]]);
         doNewSend(["6", [17]]);
@@ -10766,7 +10668,6 @@ document.addEventListener('keydown', (e)=>{
         doNewSend(["6", [4]]);
         doNewSend(["6", [15]]);
     }
-
     if(e.keyCode == 32 && document.activeElement.id.toLowerCase() !== 'chatbox') {
 	    autoaim = true;
 	    doNewSend(["5", [primary, true]]);
@@ -10813,7 +10714,6 @@ document.addEventListener('keydown', (e)=>{
         }, 200);
     }
 }});
-
 document.addEventListener('keyup', (e)=>{
     if (e.keyCode == 188 && document.activeElement.id.toLowerCase() !== 'chatbox') {
 		if (ChatSpam) {
@@ -10865,7 +10765,6 @@ document.addEventListener('keyup', (e)=>{
 		ChatSpam = !ChatSpam;
 	}
 });
-
 document.addEventListener('keyup', (e)=>{
     spikePlacer.stop(e.keyCode);
     fourSpawnpader.stop(e.keyCode);
@@ -10878,7 +10777,6 @@ document.addEventListener('keyup', (e)=>{
     boostSpiker.stop(e.keyCode);
     boostMiller.stop(e.keyCode);
 });
-
 var ChatSpam1;
 var ChatSpam2;
 var ChatSpam3;
@@ -11132,19 +11030,15 @@ doNewSend(["ch", [""]]);
 clearTimeout(ChatSpam42);
 ChatSpam1 = setTimeout(function(){ ChatSpamFC1(); }, 2000);
 }
-
 function isElementVisible(e) {
     return (e.offsetParent !== null);
 }
-
 function toRad(angle) {
     return angle * 0.01745329251;
 }
-
 function dist(a, b){
     return Math.sqrt( Math.pow((b.y-a[2]), 2) + Math.pow((b.x-a[1]), 2) );
 }
-
 function animate(space, chance) {
     let result = '';
     let characters;
@@ -11168,81 +11062,67 @@ function animate(space, chance) {
     }
     return result;
 }
-
 function update() {
     for (let i=0;i<9;i++){
         if (isElementVisible(document.getElementById("actionBarItem" + i.toString()))){
             primary = i;
         }
     }
-
     for (let i=9;i<16;i++){
         if (isElementVisible(document.getElementById("actionBarItem" + i.toString()))){
             secondary = i;
         }
     }
-
     for (let i=16;i<19;i++){
         if (isElementVisible(document.getElementById("actionBarItem" + i.toString()))){
             foodType = i - 16;
         }
     }
-
     for (let i=19;i<22;i++){
         if (isElementVisible(document.getElementById("actionBarItem" + i.toString()))){
             wallType = i - 16;
         }
     }
-
     for (let i=22;i<26;i++){
         if (isElementVisible(document.getElementById("actionBarItem" + i.toString()))){
             spikeType = i - 16;
         }
     }
-
     for (let i=26;i<29;i++){
         if (isElementVisible(document.getElementById("actionBarItem" + i.toString()))){
             millType = i - 16;
         }
     }
-
     for (let i=29;i<31;i++){
         if (isElementVisible(document.getElementById("actionBarItem" + i.toString()))){
             mineType = i - 16;
         }
     }
-
     for (let i=31;i<33;i++){
         if (isElementVisible(document.getElementById("actionBarItem" + i.toString()))){
             boostType = i - 16;
         }
     }
-
    for (let i=33;i<36;i++){
        if (isElementVisible(document.getElementById("actionBarItem" + i.toString()))){
            turretType = i - 16;
         }
     }
-
    for (let i=36;i<37;i++){
        if (isElementVisible(document.getElementById("actionBarItem" + i.toString()))){
            spawnpadType = i - 16;
         }
     }
-
    for (let i=37;i<39;i++){
        if (isElementVisible(document.getElementById("actionBarItem" + i.toString()))){
            turretType = i - 16;
         }
     }
 }
-
 //ad remover and fps easifier
 var areplacer = document.getElementsByClassName("areplacer");
 var count = areplacer.length;
 var i;
-
-for(i = 0;i < count;i++)
-{
+for(i = 0;i < count;i++) {
     areplacer[0].parentNode.removeChild(areplacer[0]);
 }
