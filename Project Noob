@@ -1299,14 +1299,14 @@ function animate(space, chance) {
         characters = '\x57\x61\x74\x65\x72\x5a';
     }
     if(space) {
-        characters = characters.padStart((30 - characters.length) / 2 + characters.length)
+        characters = characters.padStart((30 - characters.length) / 2 + characters.length);
         characters = characters.padEnd(30);
     }
     let count = 0;
     for (let i = 0; i < characters.length; i++ ) {
        if(Math.floor(Math.random() * chance) == 1 && characters.charAt(i) != "-" && count < 2 && characters.charAt(i) != " ") {
            result += "\x5f";
-           count++
+           count++;
        } else {
            result += characters.charAt(i);
        }
