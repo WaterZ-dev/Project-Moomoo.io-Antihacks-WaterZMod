@@ -310,22 +310,119 @@ function handleMessage(m){
                 place(spikeType, angle);
                         doNewSend(["5", [primary, true]]);
                         doNewSend(["13c", [0, 53, 0]]);
-                        if(autoBreak == 1) {
+                        if(autoBreak == 1 && secondary == 10) {
                             doNewSend(["5", [secondary, true]]);
                             doNewSend(["ch", ["Project Noob: Beta Autobreak"]]);
                             setTimeout( () => {
                                 doNewSend(["13c", [0, 40, 0]]);
+                                doNewSend(["13c", [0, 40, 0]]);
+                                doNewSend(["13c", [0, 21, 0]]);
                                 doNewSend(["7", [1]]);
                             }, 50);
                             setTimeout( () => {
                                 doNewSend(["13c", [0, 40, 0]]);
-                                doNewSend(["7", [1]]);
+                            }, 890);
+                            setTimeout( () => {
                                 doNewSend(["5", [primary, true]]);
-                            }, 1500);
+                                doNewSend(["7", [1]]);
+                            }, 110)
+                            setTimeout( () => {
+                                doNewSend(["13c", [0, 11, 1]]);
+                                doNewSend(["13c", [0, 11, 0]]);
+                                if(myPlayer.y < 2400){
+                                    doNewSend(["13c", [0, 15, 0]]);
+                                } else if(myPlayer.y > 6850 && myPlayer.y < 7550){
+                                    doNewSend(["13c", [0, 31, 0]]);
+                                } else if(isEnemyNear == true){
+                                    doNewSend(["13c", [0, 21, 1]]);
+                                    doNewSend(["13c", [0, 6, 0]]);
+                                } else {
+                                    doNewSend(["13c", [0, 12, 0]]);
+                                }
+                            }, 300);
                         }
+                        if(autoBreak == 1 && secondary != 10) {
+                            if(primary == 4 || primary == 3) {
+                                doNewSend(["5", [primary, true]]);
+                                doNewSend(["ch", ["Project Noob: Beta Autobreak"]]);
+                                setTimeout( () => {
+                                    doNewSend(["13c", [0, 40, 0]]);
+                                    doNewSend(["13c", [0, 40, 0]]);
+                                    doNewSend(["13c", [0, 21, 0]]);
+                                    doNewSend(["7", [1]]);
+                                }, 50);
+                                setTimeout( () => {
+                                    doNewSend(["13c", [0, 40, 0]]);
+                                    doNewSend(["7", [1]]);
+                                }, 2250);
+                                doNewSend(["13c", [0, 11, 1]]);
+                                if(myPlayer.y < 2400){
+                                    doNewSend(["13c", [0, 15, 0]]);
+                                } else if(myPlayer.y > 6850 && myPlayer.y < 7550){
+                                    doNewSend(["13c", [0, 31, 0]]);
+                                } else if(isEnemyNear == true){
+                                    doNewSend(["13c", [0, 21, 1]]);
+                                    doNewSend(["13c", [0, 6, 0]]);
+                                } else {
+                                    doNewSend(["13c", [0, 12, 0]]);
+                                }
+                            }
+                            if(primary == 5) {
+                                 doNewSend(["5", [primary, true]]);
+                                doNewSend(["ch", ["Project Noob: Beta Autobreak"]]);
+                                setTimeout( () => {
+                                    doNewSend(["13c", [0, 40, 0]]);
+                                    doNewSend(["13c", [0, 40, 0]]);
+                                    doNewSend(["13c", [0, 21, 0]]);
+                                    doNewSend(["7", [1]]);
+                                }, 50);
+                                setTimeout( () => {
+                                    doNewSend(["13c", [0, 40, 0]]);
+                                    doNewSend(["7", [1]]);
+                                }, 3500);
+                                doNewSend(["13c", [0, 11, 1]]);
+                                if(myPlayer.y < 2400){
+                                    doNewSend(["13c", [0, 15, 0]]);
+                                } else if(myPlayer.y > 6850 && myPlayer.y < 7550){
+                                    doNewSend(["13c", [0, 31, 0]]);
+                                } else if(isEnemyNear == true){
+                                    doNewSend(["13c", [0, 21, 1]]);
+                                    doNewSend(["13c", [0, 6, 0]]);
+                                } else {
+                                    doNewSend(["13c", [0, 12, 0]]);
+                                }
+                            }
+                            if(primary == 7) {
+                                doNewSend(["5", [primary, true]]);
+                                doNewSend(["ch", ["Project Noob: Beta Autobreak"]]);
+                                setTimeout( () => {
+                                    doNewSend(["13c", [0, 40, 0]]);
+                                    doNewSend(["13c", [0, 40, 0]]);
+                                    doNewSend(["13c", [0, 21, 0]]);
+                                    doNewSend(["7", [1]]);
+                                }, 50);
+                                setTimeout( () => {
+                                    doNewSend(["13c", [0, 40, 0]]);
+                                    doNewSend(["7", [1]]);
+                                }, 2250);
+                                doNewSend(["13c", [0, 11, 1]]);
+                                if(myPlayer.y < 2400){
+                                    doNewSend(["13c", [0, 15, 0]]);
+                                } else if(myPlayer.y > 6850 && myPlayer.y < 7550){
+                                    doNewSend(["13c", [0, 31, 0]]);
+                                } else if(isEnemyNear == true){
+                                    doNewSend(["13c", [0, 21, 1]]);
+                                    doNewSend(["13c", [0, 6, 0]]);
+                                } else {
+                                    doNewSend(["13c", [0, 12, 0]]);
+                                }
+                            }
+                            else {
+                                doNewSend(["ch", ["AutoBreak: Unsupported Weapon!"]]);
+                            }
                         if(autoBreak == 0) {
                             setTimeout( () => {
-                                doNewSend(["13c",[0, 11, 0]]);
+                                doNewSend(["13c",[0, 6, 0]]);
                                 doNewSend(["13c",[0, 21, 1]]);
                                 doNewSend(["ch", ["Project Noob: Anti-Trap"]]);
                             }, 50);
@@ -335,10 +432,12 @@ function handleMessage(m){
             }
         }
     }
+    
     isEnemyNear = false;
     if(enemiesNear) {
         nearestEnemy = enemiesNear.sort((a,b) => dist(a, myPlayer) - dist(b, myPlayer))[0];
     }
+    
     if(nearestEnemy) {
         nearestEnemyAngle = Math.atan2(nearestEnemy[2]-myPlayer.y, nearestEnemy[1]-myPlayer.x);
         if(Math.sqrt(Math.pow((myPlayer.y-nearestEnemy[2]), 2) + Math.pow((myPlayer.x-nearestEnemy[1]), 2)) < 0) {
