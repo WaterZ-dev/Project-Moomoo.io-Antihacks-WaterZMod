@@ -21,13 +21,14 @@ Controls:
 Q=spam heal heal (no need unless >160) ping, anti is pretty decent
 R=Insta optimized for katana (also good with polearm, but sometimes fails)
 Z=One-Tick Insta (doesn't kill soldier, need diamond polearm)  OR  Polearm-optimized insta (only use if the normal one fails)
-f5=
+f9=katana 
+f10=musket
 U=age one insta (kills soldier)
 L=Bow insta (kills soldier if you don't get katana or great axe)
 Space Bar=One-tick OP spike insta
 [=reverse insta
 ]=lag insta
-f8= gets katana at age 8 with age 7 upgrades ONLY
+f8= gets katana and musket
 T=Emp and Monke
 Y=spike gear+cx wings
 G=Bull+blood wings
@@ -64,6 +65,13 @@ join if epic: dsc.gg/project-noob
 - announcements and updates!
 - sneak-peeks and much more!
 */
+
+//bundle stuff
+
+
+
+
+
 setInterval(() => window.follmoo && follmoo(), 10);
 setInterval(function() {
     //adblocker
@@ -71,6 +79,9 @@ setInterval(function() {
     //better fps (use native res)
     window.location.native_resolution = true;
 }, 1000);
+
+//the actual hack
+
 let hue = 0;
 let mouseX;
 let mouseY;
@@ -94,6 +105,13 @@ setInterval(() => {
         doNewSend(["ch", [animate(true, 5)]]);
     }
 }, 200);
+
+setInterval(() => {
+    if(hit360 == 1) {
+        doNewSend(["2", [90**100]]);
+    }
+}, 25);
+
 setInterval(() => {
     if(click == true) {
     doNewSend(["c", [1, null]]);
@@ -114,6 +132,65 @@ function normal() {
     hat(normalHat);
     acc(normalAcc);
 }
+
+if (autoInsta == 1) {
+    if (isEnemyNear == true) {
+        autoaim = true;
+        autoprimary = true;
+        autosecondary = false;
+        doNewSend(["13c", [0, 0, 1]]);
+        doNewSend(["5", [primary, true]]);
+        doNewSend(["7", [1]]);
+        doNewSend(["13c", [1, 7, 0]]);
+        doNewSend(["13c", [0, 7, 0]]);
+        doNewSend(["13c", [1, 18, 1]]);
+        doNewSend(["13c", [0, 18, 1]]);
+        doNewSend(["13c", [1, 53, 0]]);
+        place(foodType);
+        place(foodType);
+        setTimeout( () => {
+            autoprimary = false;
+            autosecondary = true;
+            doNewSend(["5", [secondary, true]]);
+            doNewSend(["13c", [0, 53, 0]]);
+            doNewSend(["13c", [1, 21, 1]]);
+            doNewSend(["13c", [0, 21, 1]]);
+            autosecondary = false;
+            autoaim = false;
+            place(foodType);
+            place(foodType);
+            autoInsta = (autoInsta + 1) % 2;
+        }, 110);
+        doNewSend(["5", [secondary, true]]);
+        doNewSend(["13c", [1, 20, 0]]);
+        doNewSend(["13c", [0, 20, 0]]);
+        setTimeout( () => {
+            doNewSend(["5", [primary, true]]);
+        }, 1760);
+        if(myPlayer.y < 2400){
+            doNewSend(["13c", [1, 11, 1]]);
+            doNewSend(["13c", [0, 11, 1]]);
+            doNewSend(["13c", [1, 15, 0]]);
+            doNewSend(["13c", [0, 15, 0]]);
+        } else if(myPlayer.y > 6850 && myPlayer.y < 7550){
+            doNewSend(["13c", [1, 11, 1]]);
+            doNewSend(["13c", [0, 11, 1]]);
+            doNewSend(["13c", [1, 31, 0]]);
+            doNewSend(["13c", [0, 31, 0]]);
+        } else if(isEnemyNear == true){
+            doNewSend(["13c", [1, 6, 0]]);
+            doNewSend(["13c", [0, 6, 0]]);
+            doNewSend(["13c", [1, 21, 1]]);
+            doNewSend(["13c", [0, 21, 1]]);
+        } else {
+            doNewSend(["13c", [1, 11, 1]]);
+            doNewSend(["13c", [0, 11, 1]]);
+            doNewSend(["13c", [1, 12, 0]]);
+            doNewSend(["13c", [0, 12, 0]]);
+        }
+    }
+}
+
 function aim(x, y){
      var cvs = document.getElementById("gameCanvas");
      cvs.dispatchEvent(new MouseEvent("mousemove", {
@@ -165,10 +242,8 @@ let myPlayer = {
     isSkull: null
 };
 let healSpeed = 60;
-var messageToggle = 0;
 var clanToggle = 0;
-let healToggle = 1;
-let healToggle1 = 0;
+let antiInsta = 1;
 let hatToggle = 1;
 let crashing;
 let closed;
@@ -177,7 +252,9 @@ let katana = 0;
 var PREFIX = "!";
 let clickInsta = 1;
 let autoBreak = 0;
-let zInstaType = 0;
+let instaType = 0;
+let hit360 = 0;
+let autoInsta = 0;
 document.msgpack = msgpack;
 function n(){
      this.buffer = new Uint8Array([0]);
@@ -311,6 +388,7 @@ function handleMessage(m){
                         doNewSend(["5", [primary, true]]);
                         doNewSend(["13c", [0, 53, 0]]);
                         if(autoBreak == 1 && secondary == 10) {
+                            hit360 = true;
                             doNewSend(["5", [secondary, true]]);
                             doNewSend(["ch", ["Project Noob: Beta Autobreak"]]);
                             setTimeout( () => {
@@ -342,6 +420,7 @@ function handleMessage(m){
                             }, 300);
                         }
                         if(autoBreak == 1 && secondary != 10) {
+                            hit360 = true;
                             if(primary == 4 || primary == 3) {
                                 doNewSend(["5", [primary, true]]);
                                 doNewSend(["ch", ["Project Noob: Beta Autobreak"]]);
@@ -368,7 +447,8 @@ function handleMessage(m){
                                 }
                             }
                             if(primary == 5) {
-                                 doNewSend(["5", [primary, true]]);
+                                hit360 = true;
+                                doNewSend(["5", [primary, true]]);
                                 doNewSend(["ch", ["Project Noob: Beta Autobreak"]]);
                                 setTimeout( () => {
                                     doNewSend(["13c", [0, 40, 0]]);
@@ -393,6 +473,7 @@ function handleMessage(m){
                                 }
                             }
                             if(primary == 7) {
+                                hit360 = true;
                                 doNewSend(["5", [primary, true]]);
                                 doNewSend(["ch", ["Project Noob: Beta Autobreak"]]);
                                 setTimeout( () => {
@@ -420,6 +501,7 @@ function handleMessage(m){
                             else {
                                 doNewSend(["ch", ["AutoBreak: Unsupported Weapon!"]]);
                             }
+                        }
                         if(autoBreak == 0) {
                             setTimeout( () => {
                                 doNewSend(["13c",[0, 6, 0]]);
@@ -454,23 +536,22 @@ function handleMessage(m){
         nearestEnemyAngle = myPlayer.dir;
     }
     if(item == "h" && data[1] == myPlayer.id) {
-        if(data[2] < 100 && data[2] > 0 && healToggle == 1) {
+        if(data[2] < 100 && data[2] > 0 && antiInsta != 1) {
             setTimeout( () => {
-               doNewSend(["13c", [0, 7, 0]]);
-               place(foodType, null);
-               place(foodType, null);
-               place(foodType, null);
-               place(foodType, null);
-               place(foodType, null);
                doNewSend(["13c", [0, 6, 0]]);
+               place(foodType, null);
+               place(foodType, null);
+               place(foodType, null);
+               place(foodType, null);
+               place(foodType, null);
             }, healSpeed);
         }
-        if(data[2] < 100 && data[2] > 69 && healToggle !== 1) {
+        if(data[2] < 100 && data[2] > 69 && antiInsta == 1) {
             setTimeout( () => {
                 place(foodType, null);
             }, 130);
         }
-        if(data[2] < 70 && data[2] > 24 && healToggle !== 1) {
+        if(data[2] < 70 && data[2] > 24 && antiInsta == 1) {
             setTimeout( () => {
                 doNewSend(["13c", [0, 7, 0]]);
                 place(foodType, null);
@@ -482,13 +563,13 @@ function handleMessage(m){
                 doNewSend(["13c", [0, 6, 0]]);
             }, 50);
         }
-        if(data[2] < 25 && healToggle !== 1) {
+        if(data[2] < 25 && antiInsta == 1) {
             setTimeout( () => {
                 doNewSend(["13c", [0, 6, 0]]);
                 place(foodType, null);
                 place(foodType, null);
                 place(foodType, null);
-            }, 10);
+            }, 25);
         }
     }
    update();
@@ -721,69 +802,83 @@ document.addEventListener('keydown', (e)=>{
         }, 300);
     }
     if(e.keyCode == 82 && document.activeElement.id.toLowerCase() !== 'chatbox'){
-        autoaim = true;
-        autoprimary = true;
-        autosecondary = false;
-        doNewSend(["13c", [0, 0, 1]]);
-        doNewSend(["5", [primary, true]]);
-        setTimeout( () => {
-            doNewSend(["2", [nearestEnemyAngle]]);
+        if (instaType == 0) {    
+            autoaim = true;
+            autoprimary = true;
+            autosecondary = false;
+            doNewSend(["13c", [0, 0, 1]]);
+            doNewSend(["6", [4]]);
+            doNewSend(["6", [15]]);
+            doNewSend(["5", [primary, true]]);
             doNewSend(["7", [1]]);
             doNewSend(["13c", [1, 7, 0]]);
             doNewSend(["13c", [0, 7, 0]]);
             doNewSend(["13c", [1, 18, 1]]);
             doNewSend(["13c", [0, 18, 1]]);
             doNewSend(["13c", [1, 53, 0]]);
-        }, 20);
-        setTimeout( () => {
-            autoprimary = false;
-            autosecondary = true;
-            doNewSend(["2", [nearestEnemyAngle]]);
-            doNewSend(["5", [secondary, true]]);
-            doNewSend(["13c", [0, 53, 0]]);
-            doNewSend(["13c", [1, 21, 1]]);
-            doNewSend(["13c", [0, 21, 1]]);
-            for(let i = 0; i < 430; i++){
+            place(foodType);
+            place(foodType);
+            setTimeout( () => {
+                autoprimary = false;
+                autosecondary = true;
                 doNewSend(["5", [secondary, true]]);
+                doNewSend(["13c", [0, 53, 0]]);
+                doNewSend(["13c", [1, 21, 1]]);
+                doNewSend(["13c", [0, 21, 1]]);
+                autosecondary = false;
+                autoaim = false;
+                place(foodType);
+                place(foodType);
+            }, 110);
+            doNewSend(["5", [secondary, true]]);
+            doNewSend(["13c", [1, 20, 0]]);
+            doNewSend(["13c", [0, 20, 0]]);
+            setTimeout( () => {
+                doNewSend(["5", [primary, true]]);
+            }, 1760);
+            if(myPlayer.y < 2400){
+                doNewSend(["13c", [1, 11, 1]]);
+                doNewSend(["13c", [0, 11, 1]]);
+                doNewSend(["13c", [1, 15, 0]]);
+                doNewSend(["13c", [0, 15, 0]]);
+            } else if(myPlayer.y > 6850 && myPlayer.y < 7550){
+                doNewSend(["13c", [1, 11, 1]]);
+                doNewSend(["13c", [0, 11, 1]]);
+                doNewSend(["13c", [1, 31, 0]]);
+                doNewSend(["13c", [0, 31, 0]]);
+            } else if(isEnemyNear == true){
+                doNewSend(["13c", [1, 6, 0]]);
+                doNewSend(["13c", [0, 6, 0]]);
+                doNewSend(["13c", [1, 21, 1]]);
+                doNewSend(["13c", [0, 21, 1]]);
+            } else {
+                doNewSend(["13c", [1, 11, 1]]);
+                doNewSend(["13c", [0, 11, 1]]);
+                doNewSend(["13c", [1, 12, 0]]);
+                doNewSend(["13c", [0, 12, 0]]);
             }
-        }, 130);
-        setTimeout( () => {
-            place(foodType);
-            place(foodType);
+        }
+        else {
+            autoaim = true;
+            autoprimary = true;
             autosecondary = false;
+            doNewSend(["13c", [0, 0, 1]]);
+            doNewSend(["5", [primary, true]]);
             doNewSend(["7", [1]]);
-            doNewSend(["13c", [0, 11, 0]]);
-            doNewSend(["13c", [0, 21, 1]]);
-            
-            doNewSend(["5", [primary, true]]);
-            autoaim = false;
-        }, 180);
-        doNewSend(["5", [secondary, true]]);
-        doNewSend(["13c", [1, 20, 0]]);
-        doNewSend(["13c", [0, 20, 0]]);
-        setTimeout( () => {
-            doNewSend(["5", [primary, true]]);
-        }, 1750);
-        if(myPlayer.y < 2400){
-            doNewSend(["13c", [1, 11, 1]]);
-            doNewSend(["13c", [0, 11, 1]]);
-            doNewSend(["13c", [1, 15, 0]]);
-            doNewSend(["13c", [0, 15, 0]]);
-        } else if(myPlayer.y > 6850 && myPlayer.y < 7550){
-            doNewSend(["13c", [1, 11, 1]]);
-            doNewSend(["13c", [0, 11, 1]]);
-            doNewSend(["13c", [1, 31, 0]]);
-            doNewSend(["13c", [0, 31, 0]]);
-        } else if(isEnemyNear == true){
-            doNewSend(["13c", [1, 6, 0]]);
-            doNewSend(["13c", [0, 6, 0]]);
-            doNewSend(["13c", [1, 21, 1]]);
-            doNewSend(["13c", [0, 21, 1]]);
-        } else {
-            doNewSend(["13c", [1, 11, 1]]);
-            doNewSend(["13c", [0, 11, 1]]);
-            doNewSend(["13c", [1, 12, 0]]);
-            doNewSend(["13c", [0, 12, 0]]);
+            doNewSend(["13c", [0, 53, 0]])
+            setTimeout( () => {
+                autoprimary = false;
+                autosecondary = true;
+                doNewSend(["5", [secondary, true]]);
+            }, 100);
+            setTimeout( () => {
+                doNewSend(["7", [1]]);
+                doNewSend(["5", [primary, true]]);
+                autosecondary = false;
+                autoaim = false;
+                doNewSend(["13c", [0, 11, 1]]);
+                doNewSend(["13c", [0, 6, 0]]);
+            }, 220);
         }
     }
     if(e.keyCode == 76 && document.activeElement.id.toLowerCase() !== 'chatbox'){
@@ -875,89 +970,73 @@ document.addEventListener('keydown', (e)=>{
         }
     }
     if(e.keyCode == 39 && document.activeElement.id.toLowerCase() !== 'chatbox') {
-        healToggle = (healToggle + 1) % 2;
-        if(healToggle == 1) {
-            doNewSend(["ch", ["\x48\x65\x61\x6c\x20\x54\x79\x70\x65\x3a\x20\x41\x6e\x74\x69\x2d\x43\x6c\x6f\x77\x6e"]]);
+        antiInsta = (antiInsta + 1) % 2;
+        if(antiInsta == 1) {
+            doNewSend(["ch", ["Anti-Insta: True"]]);
         }
-        if (healToggle !== 1) {
-            doNewSend(["ch", ["\x48\x65\x61\x6c\x20\x54\x79\x70\x65\x3a\x20\x41\x6e\x74\x69\x2d\x49\x6e\x73\x74\x61"]]);
+        if (antiInsta != 1) {
+            doNewSend(["ch", ["Anti-Insta: False"]]);
         }
     }
     if(e.keyCode == 37 && document.activeElement.id.toLowerCase() !== 'chatbox') {
-        zInstaType = (zInstaType + 1) % 2;
-        if(zInstaType == 1) {
-            doNewSend(["ch", ["Z-Insta Mode: Skid Tick"]]);
+        instaType = (instaType + 1) % 2;
+        if(instaType == 1) {
+            doNewSend(["ch", ["regular insta"]]);
         }
-        if(zInstaType == 0) {
-            doNewSend(["ch", ["Z-Insta Mode: Regular"]]);
+        if(instaType == 0) {
+            doNewSend(["ch", ["Anti-Anti-Insta"]]);
         }
     }
     if(e.keyCode == 40 && document.activeElement.id.toLowerCase() !== 'chatbox') {
         clanToggle = (clanToggle + 1) % 2;
     }
+    
+    if(e.keyCode == 190 && document.activeElement.id.toLowerCase() !== 'chatbox') {
+        hit360 = (hit360 + 1) % 2;
+        if (hit360 == 1) {
+            doNewSend(["ch", ["360-hit active"]]);
+        }
+        else {
+            doNewSend(["ch", ["360-hit not active"]]);
+        }
+    }
+    
+    if (e.keycode == 119 && document.activeElement.id.toLowerCase() !== 'chatbox') {
+        doNewSend(["6", [4]]);
+        doNewSend(["6", [15]]);
+    }
+    
+    if (e.keycode == 120 && document.activeElement.id.toLowerCase() !== 'chatbox') {
+        doNewSend(["6", [4]]);
+    }
+    
+    if (e.keycode == 121 && document.activeElement.id.toLowerCase() !== 'chatbox') {
+        doNewSend(["6", [15]]);
+    }
+    
     if(e.keyCode == 38 && document.activeElement.id.toLowerCase() !== 'chatbox') {
         messageToggle = (messageToggle + 1) % 2;
     }
     if(e.keyCode == 189 && document.activeElement.id.toLowerCase() !== 'chatbox') {
-        autoBreak = (messageToggle + 1) % 2;
+        autoBreak = (autoBreak + 1) % 2;
         if(autoBreak = 1) {
-            doNewSend(["ch",["AutoBreak Beta Activated"]]);
+            doNewSend(["ch", ["AutoBreak Beta Activated"]]);
         }
         if(autoBreak = 0) {
-            doNewSend(["ch",["AutoBreak Beta Deactivated"]]);
+            doNewSend(["ch", ["AutoBreak Beta Deactivated"]]);
         }
     }
-    if(e.keyCode == 90 && document.activeElement.id.toLowerCase() !== 'chatbox') { //instakill (polearm)
-        if(zInstaType == 0)
-            autoaim = true;
-            autoprimary = true;
-            autosecondary = false;
-            doNewSend(["13c", [0, 0, 1]]);
-            doNewSend(["5", [primary, true]]);
-            doNewSend(["7", [1]]);
-            doNewSend(["13c", [1, 7, 0]]);
-            doNewSend(["13c", [0, 7, 0]]);
-            doNewSend(["13c", [1, 13, 1]]);
-            doNewSend(["13c", [0, 13, 1]]);
-            setTimeout( () => {
-                autoprimary = false;
-                autosecondary = true;
-                doNewSend(["13c", [0, 0, 0]]);
-                doNewSend(["13c", [1, 53, 0]]);
-                doNewSend(["13c", [0, 53, 0]]);
-                doNewSend(["13c", [1, 21, 1]]);
-                doNewSend(["13c", [0, 21, 1]]);
-                doNewSend(["5", [secondary, true]]);
-            }, 110);
-            setTimeout( () => {
-                doNewSend(["7", [1]]);
-                doNewSend(["5", [primary, true]]);
-                autosecondary = false;
-                autoaim = false;
-                doNewSend(["13c", [0, 11, 0]]);
-                doNewSend(["13c", [0, 21, 1]]);
-            }, 220);
+    
+    if(e.keyCode == 220 && document.activeElement.id.toLowerCase() !== 'chatbox') {
+        autoInsta = (autoInsta + 1) % 2;
+        if(autoBreak = 1) {
+            doNewSend(["ch", ["AI: true"]]);
         }
-        if (zInstaType == 1) {
-            autoaim = true;
-            autoprimary = true;
-            autosecondary = false;
-            doNewSend(["5", [primary, true]]);
-            doNewSend(["13c", [0, 53, 0]]);
-            setTimeout( () => {
-                doNewSend(["7", [1]]);
-                doNewSend(["13c", [0, 7, 0]]);
-            }, 70);
-            setTimeout( () => {
-                autoprimary = false;
-                autosecondary = true;
-                doNewSend(["5", [secondary, true]]);
-                doNewSend(["7", [1]]);
-            }, 100);
-            autosecondary = false;
-            autoaim = false;
+        if(autoBreak != 1) {
+            doNewSend(["ch", ["AI: false"]]);
         }
     }
+
     if(e.keyCode == 219 && document.activeElement.id.toLowerCase() !== 'chatbox'){
         autoaim = true;
         autoprimary = false;
@@ -1034,7 +1113,7 @@ document.addEventListener('keydown', (e)=>{
         doNewSend(["13c", [0, 53, 0]]);
         doNewSend(["13c", [1, 21, 1]]);
         doNewSend(["13c", [0, 21, 1]]);
-        }, 100);
+        }, 90);
         setTimeout( () => {
             doNewSend(["c", [0]]);
             doNewSend(["13c", [0, 0, 1]]);
