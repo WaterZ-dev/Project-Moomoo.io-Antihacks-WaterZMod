@@ -5,6 +5,7 @@
 // @match        *://dev.moomoo.io/*
 // @match        *://sandbox.moomoo.io/*
 // @grant        none
+// @icon         https://i.imgur.com/n9q82jG.png
 // @description  join if epic: "dsc.gg/project.noob"  We will answer yur questions, consider suggestions, and host great events and giveaways! 
 // @require https://esi.glitch.me/import4.js
 // @require http://code.jquery.com/jquery-3.3.1.min.js
