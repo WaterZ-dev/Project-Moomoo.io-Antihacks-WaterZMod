@@ -696,7 +696,7 @@ document.addEventListener('keydown', (e)=>{
         }
     }
     
-    if(e.keycode == 189 && document.activeElement.id.toLowerCase() !== 'chatbox') {
+    if(e.keycode == 187 && document.activeElement.id.toLowerCase() !== 'chatbox') {
         doNewSend(["6", [4]]);
         doNewSend(["6", [15]]);
         doNewSend(["ch", ["katana-musket no bundle?"]]);
