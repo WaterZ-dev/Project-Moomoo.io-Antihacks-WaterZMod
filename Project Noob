@@ -1,12 +1,11 @@
 // ==UserScript==
 // @author       WaterZ
-// @name         Project Noob (beta)
+// @name         Project Noob (beta) 1
 // @match        *://moomoo.io/*
 // @match        *://dev.moomoo.io/*
 // @match        *://sandbox.moomoo.io/*
 // @grant        none
-// @icon         https://i.imgur.com/n9q82jG.png
-// @description  join if epic: "dsc.gg/project.noob"  We will answer yur questions, consider suggestions, and host great events and giveaways! 
+// @description  join if epic: "dsc.gg/project.noob"  We will answer yur questions, consider suggestions, and host great events and giveaways!
 // @require https://esi.glitch.me/import4.js
 // @require http://code.jquery.com/jquery-3.3.1.min.js
 // @require https://code.jquery.com/ui/1.12.0/jquery-ui.min.js
@@ -81,7 +80,6 @@ function aim(x, y){
 let hit360 = 0;
 let messageToggle = 0;
 let clanToggle = 0;
-let instaType = 0;
 var sWindmill = 78;
 var antibull = false;
 var bullturret = false;
@@ -109,6 +107,7 @@ var enemiesNear;
 var normalHat;
 var normalAcc;
 var ws;
+var instaType = 0;
 var msgpack5 = msgpack;
 var boostDir;
 let myPlayer = {
@@ -177,14 +176,12 @@ document.addEventListener("mousedown", e => {
 
 document.addEventListener("mousedown", e => {
     if(e.button == 0){
-        doNewSend(["13c", [1, 40, 0]]);
         doNewSend(["13c", [0, 40, 0]]);
-        doNewSend(["13c", [1, 21, 1]]);
         doNewSend(["13c", [0, 21, 1]]);
         setTimeout( () => {
-            doNewSend(["13c", [1, 6, 0]]);
+            doNewSend(["13c", [0, 6, 0]]);
         }, 150);
-        setTimeout( () => {    
+        setTimeout( () => {
             if(myPlayer.y < 2400){
                 doNewSend(["13c", [0, 11, 1]]);
                 doNewSend(["13c", [0, 15, 0]]);
@@ -340,7 +337,7 @@ function handleMessage(m){
                 place(foodType, null);
                 place(foodType, null);
                 place(foodType, null);
-                doNewSend(["ch", [";-;"]]);
+                doNewSend(["ch", ["My Anti do be Trash"]]);
                 doNewSend(["13c", [0, 6, 0]]);
             }, 50);
         }
@@ -377,7 +374,6 @@ function place(id, angle = Math.atan2(mouseY - height / 2, mouseX - width / 2)) 
     doNewSend(["c", [1, angle]]);
     doNewSend(["c", [0, angle]]);
     doNewSend(["5", [null]]);
-    doNewSend(["5", [primary, true]]);
 }
 
 
@@ -491,59 +487,6 @@ if (!nearestEnemy) {
     nearestEnemyAngle = myPlayer.dir;
 }
 
-if(autoInsta == 1 && isEnemyNear == true) {
-    autoaim = true;
-    autoprimary = true;
-    autosecondary = false;
-    doNewSend(["13c", [0, 0, 1]]);
-    doNewSend(["6", [4]]);
-    doNewSend(["6", [15]]);
-    doNewSend(["5", [primary, true]]);
-    doNewSend(["7", [1]]);
-    doNewSend(["13c", [1, 7, 0]]);
-    doNewSend(["13c", [0, 7, 0]]);
-    doNewSend(["13c", [1, 18, 1]]);
-    doNewSend(["13c", [0, 18, 1]]);
-    doNewSend(["13c", [1, 53, 0]]);
-    setTimeout( () => {
-        autoprimary = false;
-        autosecondary = true;
-        doNewSend(["5", [secondary, true]]);
-        doNewSend(["13c", [0, 53, 0]]);
-        doNewSend(["13c", [1, 21, 1]]);
-        doNewSend(["13c", [0, 21, 1]]);
-        autosecondary = false;
-        autoaim = false;
-    }, 100);
-    doNewSend(["5", [secondary, true]]);
-    doNewSend(["13c", [1, 20, 0]]);
-    doNewSend(["13c", [0, 20, 0]]);
-    setTimeout( () => {
-        doNewSend(["5", [primary, true]]);
-    }, 1760);
-    if(myPlayer.y < 2400){
-        doNewSend(["13c", [1, 11, 1]]);
-        doNewSend(["13c", [0, 11, 1]]);
-        doNewSend(["13c", [1, 15, 0]]);
-        doNewSend(["13c", [0, 15, 0]]);
-    } else if(myPlayer.y > 6850 && myPlayer.y < 7550){
-        doNewSend(["13c", [1, 11, 1]]);
-        doNewSend(["13c", [0, 11, 1]]);
-        doNewSend(["13c", [1, 31, 0]]);
-        doNewSend(["13c", [0, 31, 0]]);
-    } else if(isEnemyNear == true){
-        doNewSend(["13c", [1, 6, 0]]);
-        doNewSend(["13c", [0, 6, 0]]);
-        doNewSend(["13c", [1, 21, 1]]);
-        doNewSend(["13c", [0, 21, 1]]);
-    } else {
-        doNewSend(["13c", [1, 11, 1]]);
-        doNewSend(["13c", [0, 11, 1]]);
-        doNewSend(["13c", [1, 12, 0]]);
-        doNewSend(["13c", [0, 12, 0]]);
-    }
-}
-
 var repeater2 = function(key, action) {
     let _isKeyDown = false;
 
@@ -566,7 +509,7 @@ const healer2 = repeater(81, () => {
     place(foodType, null);
     place(foodType, null);
     place(foodType, null);
-}, 0);
+}, 10);
 const boostPlacer = repeater(70, () => {
     place(boostType);
     place(boostType);
@@ -589,9 +532,7 @@ const millPlacer = repeater(78, () => {
     place(millType, Math.atan2(mouseY - height / 2, mouseX - width / 2) + toRad(0xe53d2f0144));
     place(millType, Math.atan2(mouseY - height / 2, mouseX - width / 2) + toRad(-0xe53d2f0144));
 });
-const turretPlacer = repeater(72, () => {
-    place(turretType)
-}, 0);
+const turretPlacer = repeater(72, () => {place(turretType)}, 0);
 
 document.addEventListener('keydown', (e)=>{
     spikePlacer.start(e.keyCode);
@@ -608,7 +549,7 @@ document.addEventListener('keydown', (e)=>{
         doNewSend(["13c", [1, 21, 1]]);
         doNewSend(["13c", [0, 21, 1]]);
     }
-    
+
     if (e.keyCode == 89 && document.activeElement.id.toLowerCase() !== 'chatbox') {
         doNewSend(["13c", [1, 11, 0]]);
         doNewSend(["13c", [0, 11, 0]]);
@@ -621,7 +562,7 @@ document.addEventListener('keydown', (e)=>{
         doNewSend(["13c", [1, 20, 0]]);
         doNewSend(["13c", [0, 20, 0]]);
     }
-    
+
     if (e.keyCode == 81 && document.activeElement.id.toLowerCase() !== 'chatbox') {
         doNewSend(["13c", [0, 21, 1]]);
         doNewSend(["13c", [0, 6, 0]]);
@@ -672,19 +613,19 @@ document.addEventListener('keydown', (e)=>{
             doNewSend(["ch", ["Anti-Insta: False"]]);
         }
     }
-    if(e.keyCode == 187 && document.activeElement.id.toLowerCase() !== 'chatbox') {
+    if(e.keyCode == 37 && document.activeElement.id.toLowerCase() !== 'chatbox') {
         instaType = (instaType + 1) % 2;
         if(instaType == 1) {
-            doNewSend(["ch", ["regular insta (recommended)"]]);
+            doNewSend(["ch", ["regular insta"]]);
         }
         if(instaType == 0) {
-            doNewSend(["ch", ["Anti-Anti-Insta (beta)"]]);
+            doNewSend(["ch", ["Anti-Anti-Insta"]]);
         }
     }
     if(e.keyCode == 40 && document.activeElement.id.toLowerCase() !== 'chatbox') {
         clanToggle = (clanToggle + 1) % 2;
     }
-    
+
     if(e.keyCode == 190 && document.activeElement.id.toLowerCase() !== 'chatbox') {
         if (hit360 == false) {
             hit360 = true;
@@ -695,13 +636,20 @@ document.addEventListener('keydown', (e)=>{
             doNewSend(["ch", ["360-hit not active"]]);
         }
     }
-    
-    if(e.keycode == 187 && document.activeElement.id.toLowerCase() !== 'chatbox') {
+
+    if (e.keycode == 119 && document.activeElement.id.toLowerCase() !== 'chatbox') {
         doNewSend(["6", [4]]);
         doNewSend(["6", [15]]);
-        doNewSend(["ch", ["katana-musket no bundle?"]]);
     }
-    
+
+    if (e.keycode == 120 && document.activeElement.id.toLowerCase() !== 'chatbox') {
+        doNewSend(["6", [4]]);
+    }
+
+    if (e.keycode == 121 && document.activeElement.id.toLowerCase() !== 'chatbox') {
+        doNewSend(["6", [15]]);
+    }
+
     if(e.keyCode == 38 && document.activeElement.id.toLowerCase() !== 'chatbox') {
         messageToggle = (messageToggle + 1) % 2;
     }
@@ -714,8 +662,8 @@ document.addEventListener('keydown', (e)=>{
             doNewSend(["ch", ["AutoBreak Beta Deactivated"]]);
         }
     }
-    
-    if(e.keyCode == 37 && document.activeElement.id.toLowerCase() !== 'chatbox') {
+
+    if(e.keyCode == 220 && document.activeElement.id.toLowerCase() !== 'chatbox') {
         autoInsta = (autoInsta + 1) % 2;
         if(autoBreak == 1) {
             doNewSend(["ch", ["AI: true"]]);
@@ -726,11 +674,13 @@ document.addEventListener('keydown', (e)=>{
     }
 
     if(e.keyCode == 82 && document.activeElement.id.toLowerCase() !== 'chatbox'){
-        if (instaType == 0) {    
+        if (instaType == 0) {
             autoaim = true;
             autoprimary = true;
             autosecondary = false;
             doNewSend(["13c", [0, 0, 1]]);
+            doNewSend(["6", [4]]);
+            doNewSend(["6", [15]]);
             doNewSend(["5", [primary, true]]);
             doNewSend(["7", [1]]);
             doNewSend(["13c", [1, 7, 0]]);
@@ -747,6 +697,7 @@ document.addEventListener('keydown', (e)=>{
                 doNewSend(["13c", [0, 53, 0]]);
                 doNewSend(["13c", [1, 21, 1]]);
                 doNewSend(["13c", [0, 21, 1]]);
+                doNewSend(["7", [1]]);
                 autosecondary = false;
                 autoaim = false;
                 place(foodType);
@@ -780,7 +731,7 @@ document.addEventListener('keydown', (e)=>{
                 doNewSend(["13c", [0, 12, 0]]);
             }
         }
-        else {
+        if(instaType == 1) {
             autoaim = true;
             autoprimary = true;
             autosecondary = false;
@@ -854,7 +805,7 @@ document.addEventListener('keydown', (e)=>{
             autoaim = false;
         }, 300);
     }
-    
+
     if(e.keyCode == 76 && document.activeElement.id.toLowerCase() !== 'chatbox'){
         autoaim = true;
         doNewSend(["5", [secondary, true]]);
@@ -891,7 +842,7 @@ document.addEventListener('keydown', (e)=>{
             autoaim = false;
         }, 300);
     }
-    
+
     if(e.keyCode == 32 && document.activeElement.id.toLowerCase() !== 'chatbox') {
 	    autoaim = true;
 	    doNewSend(["ch", ["rip q holder"]])
@@ -938,7 +889,7 @@ document.addEventListener('keydown', (e)=>{
             autoaim = false;
         }, 200);
     }
-    
+
 });
 document.addEventListener('keyup', (e)=>{
 if (e.keyCode == 188 && document.activeElement.id.toLowerCase() !== 'chatbox') {
